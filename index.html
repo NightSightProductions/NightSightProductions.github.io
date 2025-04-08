@@ -38,30 +38,6 @@
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
-        }
-        
-        body.loaded {
-            opacity: 1;
-        }
-        
-        .transition-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease;
-        }
-        
-        .transition-overlay.active {
-            opacity: 1;
-            visibility: visible;
         }
         
         /* Removed preloader styles */
@@ -768,7 +744,7 @@
 </head>
 
 <body class="mod-lt">
-    <div class="transition-overlay"></div>
+    <!-- Removed preloader div -->
 
     <header class="header">
         <div class="header-container">
@@ -950,33 +926,7 @@
     </footer>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Show page with fade-in effect when loaded
-            setTimeout(function() {
-                document.body.classList.add('loaded');
-            }, 50);
-            
-            // Handle all internal links for transition effect
-            document.querySelectorAll('a').forEach(link => {
-                // Only apply to internal links that aren't anchors
-                if (link.hostname === window.location.hostname && !link.href.includes('#') && !link.target) {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        const overlay = document.querySelector('.transition-overlay');
-                        const destination = this.href;
-                        
-                        // Fade out
-                        overlay.classList.add('active');
-                        
-                        // Navigate after transition completes
-                        setTimeout(function() {
-                            window.location.href = destination;
-                        }, 500);
-                    });
-                }
-            });
-        });
+        // Removed preloader script
         
         // Keep the rest of the JavaScript
         const navItems = document.querySelectorAll('.main-nav a');
