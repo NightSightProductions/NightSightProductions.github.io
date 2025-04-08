@@ -1,0 +1,662 @@
+.html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - NightSightProductions</title>
+    <meta property="og:site_name" content="NightSightProductions">
+    <meta property="og:url" content="https://nightsightproductions.github.io/team.html">
+    <meta property="og:title" content="Our Team - NightSightProductions">
+    <meta property="og:image" content="images/c-logo.png">
+    <meta property="og:description" content="Meet the talented team behind NightSightProductions">
+    <meta property="og:type" content="website">
+    <meta name="twitter:site" content="@NightSightProd">
+    <meta name="twitter:url" content="https://nightsightproductions.github.io/team.html">
+    <meta name="twitter:title" content="Our Team - NightSightProductions">
+    <meta name="twitter:description" content="Meet the talented team behind NightSightProductions">
+    <meta name="twitter:image" content="images/c-logo.png">
+    <meta name="twitter:type" content="website">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap">
+    <style>
+        :root {
+            --primary-color: #8A2BE2; /* Vibrant purple */
+            --secondary-color: #4B0082; /* Indigo */
+            --accent-color: #BA55D3; /* Medium orchid */
+            --text-color: #333333; /* Dark text for readability on white */
+            --background-color: #ffffff; /* White background */
+            --card-background: #f8f8f8; /* Light grey for cards */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header and navigation */
+        .header {
+            background-color: #000;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-image-container {
+            height: 50px;
+            width: 50px;
+            margin-right: 15px;
+            background-color: #000;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* Page title */
+        .page-title {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://via.placeholder.com/1600x400') no-repeat center center;
+            background-size: cover;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Team showcase */
+        .section-header {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+        
+        .team-showcase {
+            margin-bottom: 4rem;
+        }
+        
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+        
+        .team-intro p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Leadership Team */
+        .leadership {
+            margin-bottom: 4rem;
+        }
+        
+        .leadership-card {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-background);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .leadership-profile {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .leadership-photo {
+            flex: 0 0 350px;
+        }
+        
+        .leadership-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .leadership-info {
+            flex: 1;
+            padding: 2rem;
+        }
+        
+        .leadership-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: var(--accent-color);
+        }
+        
+        .leadership-role {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .leadership-bio {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        .leadership-social {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .leadership-social a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        
+        .leadership-social a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            background-color: var(--card-background);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.2);
+        }
+        
+        .team-photo {
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            color: var(--accent-color);
+        }
+        
+        .team-role {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .team-info p {
+            font-size: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .team-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .team-social a {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .team-social a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Join Us Section */
+        .join-us {
+            background-color: var(--card-background);
+            padding: 3rem;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .join-us h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .join-us p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h4 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.5rem;
+            }
+            
+            .leadership-profile {
+                flex-direction: column;
+            }
+            
+            .leadership-photo {
+                flex: 0 0 auto;
+                height: 300px;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+            }
+            
+            .join-us {
+                padding: 2rem;
+            }
+            
+            .join-us h3 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .page-title {
+                padding: 3rem 1rem;
+            }
+            
+            .join-us {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-image-container">
+                    <img src="images/c-logo.png" alt="NightSightProductions Logo" class="logo-image" />
+                </div>
+                <div class="logo">NightSightProductions</div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#mods">Games</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="team.html" class="active">Team</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="page-title">
+        <h1>Meet Our Team</h1>
+        <p>The talented individuals behind NightSightProductions</p>
+    </div>
+    
+    <div class="wrapper">
+        <section class="team-showcase">
+            <div class="team-intro">
+                <p>At NightSightProductions, our team consists of passionate developers, artists, and technologists who share a common vision: to push the boundaries of graphics technology and create immersive gaming experiences.</p>
+                <p>Together, we combine decades of experience in game development, modding, and graphics programming to bring cutting-edge visual enhancements to both new and classic games.</p>
+            </div>
+            
+            <div class="leadership">
+                <h2 class="section-header">Leadership</h2>
+                <div class="leadership-card">
+                    <div class="leadership-profile">
+                        <div class="leadership-photo">
+                            <img src="images/King Vulpes.png" alt="King Vulpes" />
+                        </div>
+                        <div class="leadership-info">
+                            <h3 class="leadership-name">King Vulpes</h3>
+                            <div class="leadership-role">CEO & Founder</div>
+                            <div class="leadership-bio">
+                                <p>King Vulpes is the visionary leader behind NightSightProductions, with a passion for pushing the boundaries of gaming technology. With extensive experience in graphics programming and a deep understanding of ray tracing technology, they founded NightSightProductions to bring next-generation visual fidelity to beloved classic games.</p>
+                                <p>Under their guidance, our team is working on groundbreaking projects like Portal 2 with RTX and supporting the broader RTX modding community through publishing and technical support.</p>
+                            </div>
+                            <div class="leadership-social">
+                                <a href="#"><i class="mdi mdi-twitter"></i></a>
+                                <a href="#"><i class="mdi mdi-linkedin"></i></a>
+                                <a href="#"><i class="mdi mdi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-header">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Technical Director</div>
+                        <p>Experienced graphics programmer with expertise in ray tracing technology, responsible for the technical direction of our RTX enhancement projects.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="mdi mdi-twitter"></i></a>
+                            <a href="#"><i class="mdi mdi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Art Director</div>
+                        <p>Skilled artist focusing on enhancing visual quality while preserving artistic intent of original game designs. Leads the aesthetic aspects of our RTX projects.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="mdi mdi-instagram"></i></a>
+                            <a href="#"><i class="mdi mdi-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Community Manager</div>
+                        <p>Passionate gamer bridging the gap between our development team and the community, ensuring feedback is incorporated into our projects.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="mdi mdi-twitter"></i></a>
+                            <a href="#"><i class="mdi mdi-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Graphics Engineer</div>
+                        <p>Specializes in implementing advanced rendering techniques and optimizing performance for various hardware configurations.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="mdi mdi-github"></i></a>
+                            <a href="#"><i class="mdi mdi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Technical Artist</div>
+                        <p>Bridges the gap between art and technology, ensuring assets are optimized for real-time ray tracing performance.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="mdi mdi-artstation"></i></a>
+                            <a href="#"><i class="mdi mdi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Game Developer</div>
+                        <p>Experienced in game engine architecture and gameplay systems, ensuring our visual enhancements preserve the original gameplay experience.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="mdi mdi-github"></i></a>
+                            <a href="#"><i class="mdi mdi-steam"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="join-us">
+            <h3>Join Our Team</h3>
+            <p>Are you passionate about graphics technology and game development? We're always looking for talented individuals to join our team. If you're excited about ray tracing, game modding, or enhancing classic games, we'd love to hear from you!</p>
+            <a href="#" class="btn">View Open Positions</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>RTX Mods</h4>
+                    <ul>
+                        <li><a href="portal2rtx.html">Portal 2 with RTX</a></li>
+                        <li><a href="#">Portal RTX AMD Mod</a></li>
+                        <li><a href="#">Portal RTX Steam Deck Mod</a></li>
+                        <li><a href="#">RTX Remix Publishing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">RTX Mod Development</a></li>
+                        <li><a href="index.html#services">Performance Optimization</a></li>
+                        <li><a href="index.html#services">Technical Consulting</a></li>
+                        <li><a href="index.html#services">Community Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
