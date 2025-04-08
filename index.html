@@ -40,19 +40,7 @@
             line-height: 1.6;
         }
         
-        .preloader {
-            align-items: center;
-            background: rgb(23, 22, 22);
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            left: 0;
-            position: fixed;
-            top: 0;
-            transition: opacity 0.3s linear;
-            width: 100%;
-            z-index: 9999;
-        }
+        /* Removed preloader styles */
         
         .wrapper {
             max-width: 1400px;
@@ -547,9 +535,7 @@
 </head>
 
 <body class="mod-lt">
-    <div class="preloader">
-        <img src="images/c-logo.png" alt="NightSightProductions" style="height: 100px; width: auto;">
-    </div>
+    <!-- Removed preloader div -->
 
     <header class="header">
         <div class="header-container">
@@ -753,5 +739,18 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Removed preloader script
+        
+        // Keep the rest of the JavaScript
+        const navItems = document.querySelectorAll('.main-nav a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
