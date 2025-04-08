@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NightSightProductions - RTX Mods & Gaming Entertainment</title>
+    <style>
+        :root {
+            --primary-color: #8A2BE2; /* Vibrant purple */
+            --secondary-color: #4B0082; /* Indigo */
+            --accent-color: #BA55D3; /* Medium orchid */
+            --text-color: #f8f9fa;
+            --background-color: #0d0d0d; /* Darker black */
+            --card-background: #1a1a1a; /* Dark gray */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><circle fill="rgba(255,255,255,0.05)" cx="50" cy="50" r="30"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background-color: var(--primary-color);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background-color: var(--card-background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            background-color: var(--card-background);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        .portfolio-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .featured-mod {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+        }
+        
+        .featured-mod h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .featured-mod p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-photo {
+            height: 250px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+        }
+        
+        .team-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--accent-color);
+        }
+        
+        .team-role {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #444;
+            background-color: #1a1a1a;
+            color: var(--text-color);
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        footer {
+            background-color: #080808;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: #666;
+        }
+        
+        .upcoming {
+            background-color: rgba(138, 43, 226, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .upcoming h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Purple glow effects */
+        .portfolio-item:hover {
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">NightSightProductions</div>
+        <div class="tagline">Pushing the Boundaries of Gaming Technology</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#mods">RTX Mods</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Here at NightSightProductions, we make entertainment for you and also believe in pushing the boundaries of technology. We're passionate about enhancing classic games with cutting-edge RTX technology, bringing new life to beloved titles.</p>
+                    <p>Our team consists of talented developers, modders, and artists who share a common vision: to create immersive gaming experiences through the power of modern graphics technology.</p>
+                    <p>From developing RTX mods for popular games to offering publishing services for RTX Remix creators, we're dedicated to bringing next-generation visual fidelity to both new and classic titles.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/300" alt="NightSightProductions Logo" />
+                </div>
+            </div>
+        </section>
+        
+        <section id="mods">
+            <h2>Our RTX Mods</h2>
+            
+            <div class="featured-mod">
+                <h3>Portal 2 with RTX Remaster</h3>
+                <p>Our currently in-development flagship project aims to bring the power of RTX ray tracing to Valve's beloved Portal 2, enhancing its visual fidelity while maintaining its iconic art style and atmosphere.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Portal RTX AMD Mod" />
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Portal RTX AMD Mod</h3>
+                        <p>Enhanced performance optimization for AMD graphics cards.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Portal RTX Steam Deck Mod" />
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Portal RTX Steam Deck Mod</h3>
+                        <p>Optimized for the portable Steam Deck hardware.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Portal 2 RTX" />
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Portal 2 with RTX</h3>
+                        <p>Coming Soon - Our most ambitious project yet.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="RTX Remix" />
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">RTX Remix Publishing</h3>
+                        <p>Supporting the RTX modding community.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="upcoming">
+                <h3>Upcoming Projects</h3>
+                <p>We're constantly working on new RTX mods and enhancements for classic games. Stay tuned for announcements about our future projects and collaborations. Follow us on social media to be the first to know about our upcoming releases.</p>
+            </div>
+        </section>
+        
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <h3 class="service-title">RTX Mod Development</h3>
+                    <p>Custom RTX modifications for classic and modern games, enhancing lighting, reflections, and overall visual fidelity.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Performance Optimization</h3>
+                    <p>Specialized optimization for various hardware configurations, including AMD GPUs and the Steam Deck.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3 class="service-title">RTX Remix Publishing</h3>
+                    <p>Publishing services for RTX Remix mods, helping creators reach a wider audience with their work.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">Technical Consulting</h3>
+                    <p>Expert advice and guidance for developers looking to implement RTX technology in their projects.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Community Support</h3>
+                    <p>Resources, tutorials, and support for the RTX modding community to enhance their projects.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3 class="service-title">RTX Workshops</h3>
+                    <p>Educational sessions and hands-on training for aspiring RTX modders and developers.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="team">
+            <h2>Meet The Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/300/300" alt="Alex Chen" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Alex Chen</h3>
+                        <div class="team-role">Founder & Lead Developer</div>
+                        <p>RTX enthusiast with a passion for enhancing classic games with modern technology.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">💼</a>
+                            <a href="#" class="social-link">🎮</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/300/300" alt="Maya Rodriguez" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Maya Rodriguez</h3>
+                        <div class="team-role">Graphics Programmer</div>
+                        <p>Specialized in implementing ray-tracing effects and optimizing performance across platforms.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">💼</a>
+                            <a href="#" class="social-link">🖥️</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/300/300" alt="David Kim" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">David Kim</h3>
+                        <div class="team-role">Technical Artist</div>
+                        <p>Bridging the gap between art and technology to create visually stunning RTX experiences.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">💼</a>
+                            <a href="#" class="social-link">🎨</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/300/300" alt="Sarah Johnson" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Sarah Johnson</h3>
+                        <div class="team-role">Community Manager</div>
+                        <p>Keeping our modding community connected, supported, and up-to-date with the latest developments.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">💼</a>
+                            <a href="#" class="social-link">👥</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>Have a question about our mods? Interested in collaborating on an RTX project? We'd love to hear from you!</p>
+                    <p><strong>Email:</strong> info@nightsightproductions.com</p>
+                    <p><strong>Discord:</strong> Join our server: discord.gg/nightsightproductions</p>
+                    <p><strong>GitHub:</strong> github.com/nightsightproductions</p>
+                    <p>We're always looking for talented developers and artists to join our team. If you're passionate about RTX technology and gaming, reach out to us!</p>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">NightSightProductions</div>
+            <p>Pushing the Boundaries of Gaming Technology</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#mods">RTX Mods</a>
+                <a href="#services">Services</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="social-links" style="justify-content: center; margin: 1rem 0;">
+                <a href="#" class="social-link">Discord</a>
+                <a href="#" class="social-link">GitHub</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">YouTube</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 NightSightProductions. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
