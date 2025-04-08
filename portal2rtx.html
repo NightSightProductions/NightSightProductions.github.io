@@ -457,6 +457,172 @@
                 max-width: 230px;
             }
         }
+        
+        @media (max-width: 768px) {
+            /* Improve the main logo text */
+            .logo {
+                font-size: 1.8rem !important; /* Force smaller font size */
+                margin-bottom: 0.5rem !important; /* Less bottom margin */
+                white-space: normal !important; /* Allow text wrapping */
+                line-height: 1.2 !important; /* Tighter line height */
+                padding: 0 5px !important; /* Add side padding */
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                padding: 0 10px; /* Add some padding on the sides */
+                margin-bottom: 0.5rem !important; /* Less margin */
+            }
+            
+            .logo-image-container {
+                margin-right: 0;
+                margin-bottom: 8px;
+                height: 60px; /* Slightly smaller for mobile */
+                width: 60px;
+            }
+            
+            .logo-image {
+                height: 45px;
+            }
+            
+            /* Make the Portal 2 RTX logo responsive */
+            .project-logo {
+                margin: 1rem auto !important; /* Reduced margin for mobile */
+            }
+            
+            .project-logo img {
+                max-height: 150px; /* Smaller on mobile */
+                max-width: 90% !important; /* Prevent overflow */
+            }
+            
+            /* Adjust overall header padding */
+            header {
+                padding: 1rem 0 !important; /* Less vertical padding */
+            }
+            
+            /* New responsive styles for the header */
+            .tagline {
+                font-size: 0.9rem !important; /* Smaller tagline on mobile */
+                padding: 0 15px; /* Add padding to prevent text touching edges */
+                margin-bottom: 1rem !important; /* Less bottom margin */
+            }
+            
+            nav {
+                padding: 0.8rem 0; /* Reduced padding */
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            nav li {
+                margin: 0; /* Remove horizontal margin */
+            }
+            
+            /* Make text more readable on mobile */
+            p {
+                font-size: 0.95rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            /* Improve feature grid on mobile */
+            .feature-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                gap: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem; /* Less padding in cards */
+            }
+            
+            /* Make portal divider smaller on mobile */
+            .portal-divider {
+                margin: 2rem 0; /* Less vertical margin */
+            }
+            
+            .portal-divider .circle {
+                width: 35px;
+                height: 35px;
+            }
+            
+            /* Better gallery layout on mobile */
+            .gallery {
+                grid-template-columns: 1fr; /* Single column gallery on mobile */
+            }
+            
+            .gallery-item {
+                height: 180px; /* Slightly shorter gallery items */
+            }
+        }
+        
+        /* For very small screens */
+        @media (max-width: 380px) {
+            .logo {
+                font-size: 1.5rem !important; /* Even smaller on very small screens */
+                padding: 0 3px !important;
+            }
+            
+            .logo-image-container {
+                height: 50px;
+                width: 50px;
+                margin-bottom: 5px;
+            }
+            
+            .logo-image {
+                height: 35px;
+            }
+            
+            .project-logo img {
+                max-height: 110px !important; /* Even smaller on very small screens */
+                max-width: 95% !important;
+            }
+            
+            header {
+                padding: 0.8rem 0 !important;
+            }
+            
+            /* Prevent buttons from overlapping on small screens */
+            .btn, .btn-orange {
+                padding: 0.7rem 1.5rem; /* Smaller buttons */
+                font-size: 0.9rem;
+                display: block !important;
+                margin: 0.8rem auto !important; /* Force buttons to stack */
+                max-width: 200px;
+            }
+            
+            /* Smaller headings on very small screens */
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            /* Smaller features and spacing */
+            .feature-card {
+                padding: 1.2rem;
+            }
+            
+            .feature-icon {
+                font-size: 2rem;
+                margin-bottom: 0.7rem;
+            }
+            
+            /* Reduce spacing in overview section */
+            section {
+                margin-bottom: 3rem;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
