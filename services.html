@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - NightSightProductions</title>
+    <meta property="og:site_name" content="NightSightProductions">
+    <meta property="og:url" content="https://nightsightproductions.github.io/services.html">
+    <meta property="og:title" content="Our Services - NightSightProductions">
+    <meta property="og:image" content="images/c-logo.png">
+    <meta property="og:description" content="RTX Development Services & Technical Consulting">
+    <meta property="og:type" content="website">
+    <meta name="twitter:site" content="@NightSightProd">
+    <meta name="twitter:url" content="https://nightsightproductions.github.io/services.html">
+    <meta name="twitter:title" content="Our Services - NightSightProductions">
+    <meta name="twitter:description" content="RTX Development Services & Technical Consulting">
+    <meta name="twitter:image" content="images/c-logo.png">
+    <meta name="twitter:type" content="website">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap">
+    <style>
+        :root {
+            --primary-color: #8A2BE2; /* Vibrant purple */
+            --secondary-color: #4B0082; /* Indigo */
+            --accent-color: #BA55D3; /* Medium orchid */
+            --text-color: #333333; /* Dark text for readability on white */
+            --background-color: #ffffff; /* White background */
+            --card-background: #f8f8f8; /* Light grey for cards */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header and navigation */
+        .header {
+            background-color: #000;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-image-container {
+            height: 50px;
+            width: 50px;
+            margin-right: 15px;
+            background-color: #000;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* Page title */
+        .page-title {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://via.placeholder.com/1600x400') no-repeat center center;
+            background-size: cover;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Section headers */
+        .section-header {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        /* Services section */
+        .services-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .services-intro p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .service-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .service-card p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .service-features {
+            margin: 0 0 1.5rem 1.2rem;
+            list-style-type: none;
+        }
+        
+        .service-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* Process section */
+        .process-section {
+            margin-bottom: 4rem;
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .process-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            box-shadow: 0 0 0 4px white;
+        }
+        
+        .process-content {
+            width: calc(50% - 50px);
+            background-color: var(--card-background);
+            padding: 1.5rem;
+            margin: 0 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        /* Contact section */
+        .contact-section {
+            background-color: var(--card-background);
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-section h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h4 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.5rem;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .process-step,
+            .process-step:nth-child(even) {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            
+            .process-icon {
+                left: 30px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .process-content {
+                width: calc(100% - 80px);
+                margin-left: 60px;
+                margin-right: 0;
+            }
+            
+            .contact-section {
+                padding: 2rem;
+            }
+            
+            .contact-section h3 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                padding: 3rem 1rem;
+            }
+            
+            .contact-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-image-container">
+                    <img src="images/c-logo.png" alt="NightSightProductions Logo" class="logo-image" />
+                </div>
+                <div class="logo">NightSightProductions</div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#mods">Games</a></li>
+                    <li><a href="index.html#rtx-mods">RTX Mods</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="team.html">Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="page-title">
+        <h1>Our Services</h1>
+        <p>Cutting-edge RTX development and technical consulting services</p>
+    </div>
+    
+    <div class="wrapper">
+        <section>
+            <div class="services-intro">
+                <p>At NightSightProductions, we offer specialized services focused on enhancing visual fidelity through ray tracing technology. Our team combines technical expertise with artistic vision to deliver exceptional results for our clients.</p>
+                <p>Whether you need custom RTX mods for classic games, optimization for specific hardware, or technical consulting for your own projects, we have the knowledge and experience to help you achieve your goals.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <h3 class="service-title">RTX Mod Development</h3>
+                    <p>We create custom RTX modifications for classic and modern games, enhancing lighting, reflections, and overall visual fidelity while maintaining the original artistic intent.</p>
+                    <ul class="service-features">
+                        <li>Full path-traced lighting solutions</li>
+                        <li>PBR material conversion</li>
+                        <li>Enhanced geometric detail</li>
+                        <li>Custom shader development</li>
+                    </ul>
+                    <a href="#contact-form" class="btn">Request Service</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Performance Optimization</h3>
+                    <p>We specialize in optimizing RTX implementations for various hardware configurations, ensuring smooth performance across different platforms.</p>
+                    <ul class="service-features">
+                        <li>AMD GPU optimization</li>
+                        <li>Steam Deck compatibility</li>
+                        <li>Performance profiling</li>
+                        <li>Hardware-specific tuning</li>
+                    </ul>
+                    <a href="#contact-form" class="btn">Request Service</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3 class="service-title">RTX Remix Publishing</h3>
+                    <p>We offer publishing services for RTX Remix creators, helping talented modders reach a wider audience with their work and providing technical support.</p>
+                    <ul class="service-features">
+                        <li>Project hosting</li>
+                        <li>Technical review & feedback</li>
+                        <li>Marketing support</li>
+                        <li>Community engagement</li>
+                    </ul>
+                    <a href="#contact-form" class="btn">Submit Your Mod</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">Technical Consulting</h3>
+                    <p>Our experts provide guidance and advice for developers looking to implement RTX technology in their projects, from planning to execution.</p>
+                    <ul class="service-features">
+                        <li>Implementation strategy</li>
+                        <li>Art direction for PBR</li>
+                        <li>Technical feasibility studies</li>
+                        <li>Training & knowledge transfer</li>
+                    </ul>
+                    <a href="#contact-form" class="btn">Request Consultation</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="process-section">
+            <h2 class="section-header">Our Process</h2>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-icon">1</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Consultation & Planning</h3>
+                        <p>We begin with a detailed discussion of your project goals, technical constraints, and visual aspirations. Our team works with you to develop a comprehensive plan that aligns with your vision.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-icon">2</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Technical Assessment</h3>
+                        <p>Our engineers analyze the target game or application, identifying the best approach for implementing ray tracing and other visual enhancements while preserving performance.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-icon">3</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Development & Implementation</h3>
+                        <p>We execute the plan, implementing ray tracing, creating or updating materials for PBR workflows, and enhancing geometry as needed. Regular progress updates keep you informed throughout.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-icon">4</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Testing & Optimization</h3>
+                        <p>Rigorous testing across different hardware configurations ensures your project not only looks stunning but runs smoothly. We fine-tune for optimal performance.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-icon">5</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Delivery & Support</h3>
+                        <p>Once everything meets our high standards, we deliver the final product and provide ongoing support to address any issues that may arise post-implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact-form" class="contact-section">
+            <h3>Ready to Get Started?</h3>
+            <p>Contact us to discuss your project needs and how our services can help bring your vision to life with the power of ray tracing technology.</p>
+            <a href="mailto:contact@nightsightproductions.com" class="btn">Contact Us</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>RTX Mods</h4>
+                    <ul>
+                        <li><a href="portal2rtx.html">Portal 2 with RTX</a></li>
+                        <li><a href="#">Portal RTX AMD Mod</a></li>
+                        <li><a href="#">Portal RTX Steam Deck Mod</a></li>
+                        <li><a href="#">RTX Remix Publishing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#" class="active">RTX Mod Development</a></li>
+                        <li><a href="#">Performance Optimization</a></li>
+                        <li><a href="#">Technical Consulting</a></li>
+                        <li><a href="#">Community Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#contact-form">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Games</h4>
+                    <ul>
+                        <li><a href="portal2rtx.html">Portal 2 with RTX</a></li>
+                        <li><a href="#">RTX Remix Publishing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 NightSightProductions. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.main-nav a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
