@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mods - NightSightProductions</title>
+    <meta property="og:site_name" content="NightSightProductions">
+    <meta property="og:url" content="https://nightsightproductions.github.io/mods.html">
+    <meta property="og:title" content="Our Mods - NightSightProductions">
+    <meta property="og:image" content="images/c-logo.png">
+    <meta property="og:description" content="High-quality mods for enhanced gaming experiences">
+    <meta property="og:type" content="website">
+    <meta name="twitter:site" content="@NightSightProd">
+    <meta name="twitter:url" content="https://nightsightproductions.github.io/mods.html">
+    <meta name="twitter:title" content="Our Mods - NightSightProductions">
+    <meta name="twitter:description" content="High-quality mods for enhanced gaming experiences">
+    <meta name="twitter:image" content="images/c-logo.png">
+    <meta name="twitter:type" content="website">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap">
+    <style>
+        :root {
+            --primary-color: #8A2BE2; /* Vibrant purple */
+            --secondary-color: #4B0082; /* Indigo */
+            --accent-color: #BA55D3; /* Medium orchid */
+            --text-color: #333333; /* Dark text for readability on white */
+            --background-color: #ffffff; /* White background */
+            --card-background: #f8f8f8; /* Light grey for cards */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header and navigation */
+        .header {
+            background-color: #000;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-image-container {
+            height: 60px;
+            width: 60px;
+            margin-right: 15px;
+            background-color: #000;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* Page title */
+        .page-title {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://via.placeholder.com/1600x400') no-repeat center center;
+            background-size: cover;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Section headers */
+        .section-header {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        /* Mods intro */
+        .mods-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .mods-intro p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Mods grid */
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .mod-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mod-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.15);
+        }
+        
+        .mod-image {
+            height: 200px;
+            width: 100%;
+            object-fit: contain;
+            background-color: #111;
+            padding: 20px;
+        }
+        
+        .mod-details {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mod-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .mod-details p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .feature-list {
+            margin: 1rem 0;
+            padding-left: 1.2rem;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .download-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .download-count {
+            padding: 0.3rem 0.6rem;
+            background-color: rgba(138, 43, 226, 0.1);
+            border-radius: 4px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        /* In development banner */
+        .in-development {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        /* Remix toolkit */
+        .remix-toolkit {
+            background-color: rgba(138, 43, 226, 0.05);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .remix-toolkit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/400x300') no-repeat right bottom;
+            background-size: 250px auto;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .remix-toolkit-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+        
+        .remix-toolkit h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .remix-toolkit p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Support section */
+        .support-section {
+            background-color: var(--card-background);
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .support-section h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .support-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h4 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.5rem;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+            }
+            
+            .mods-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .remix-toolkit {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-title {
+                padding: 3rem 1rem;
+            }
+            
+            .mods-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .support-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .support-section h3 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-image-container">
+                    <img src="images/c-logo.png" alt="NightSightProductions Logo" class="logo-image" />
+                </div>
+                <div class="logo">NightSightProductions</div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="mods.html" class="active">Mods</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="team.html">Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="page-title">
+        <h1>Our Mods</h1>
+        <p>Enhancing games with advanced visual features and performance improvements</p>
+    </div>
+    
+    <div class="wrapper">
+        <section>
+            <div class="mods-intro">
+                <p>At NightSightProductions, we create high-quality mods that enhance existing games with advanced graphics technology and performance optimizations. Our mods focus on improving visual fidelity while ensuring compatibility with a wide range of hardware.</p>
+                <p>Whether you're looking to experience ray tracing on AMD hardware or want to play Portal RTX on your Steam Deck, our mods provide solutions that make cutting-edge gaming experiences more accessible.</p>
+            </div>
+            
+            <h2 class="section-header">Featured Mods</h2>
+            
+            <div class="mods-grid">
+                <div class="mod-card">
+                    <div style="position: relative;">
+                        <img src="images/p2rtx-logo.png" alt="Portal RTX AMD Mod" class="mod-image" />
+                    </div>
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal RTX AMD Mod</h3>
+                        <p>Enhanced performance optimization for AMD graphics cards, making NVIDIA's Portal RTX more accessible to AMD users.</p>
+                        
+                        <ul class="feature-list">
+                            <li>Optimized shaders for AMD RDNA architecture</li>
+                            <li>Performance improvements of up to 35%</li>
+                            <li>Reduced VRAM usage for better compatibility</li>
+                            <li>Compatible with FSR for additional performance</li>
+                        </ul>
+                        
+                        <div class="download-info">
+                            <span>Last updated: March 15, 2025</span>
+                            <span class="download-count">5.2K Downloads</span>
+                        </div>
+                        
+                        <a href="#" class="btn">Download</a>
+                    </div>
+                </div>
+                
+                <div class="mod-card">
+                    <div style="position: relative;">
+                        <img src="images/p2rtx-logo.png" alt="Portal RTX Steam Deck Mod" class="mod-image" />
+                    </div>
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
+                        <p>Specially optimized version of Portal RTX for the Steam Deck hardware, with performance tweaks for portable play.</p>
+                        
+                        <ul class="feature-list">
+                            <li>Custom settings profile for Steam Deck</li>
+                            <li>Battery-saving optimizations</li>
+                            <li>Streamlined shader compilation</li>
+                            <li>Improved input controls for Steam Deck</li>
+                        </ul>
+                        
+                        <div class="download-info">
+                            <span>Last updated: April 1, 2025</span>
+                            <span class="download-count">3.8K Downloads</span>
+                        </div>
+                        
+                        <a href="#" class="btn">Download</a>
+                    </div>
+                </div>
+                
+                <div class="mod-card">
+                    <div style="position: relative;">
+                        <img src="images/c-logo.png" alt="Remix Support" class="mod-image" />
+                    </div>
+                    <div class="mod-details">
+                        <h3 class="mod-title">Remix Support</h3>
+                        <p>Resources and tools for Remix creators, including tutorials, assets, and publishing assistance.</p>
+                        
+                        <ul class="feature-list">
+                            <li>Asset optimization guides</li>
+                            <li>Material conversion tools</li>
+                            <li>Performance analysis utilities</li>
+                            <li>Community showcase platform</li>
+                        </ul>
+                        
+                        <div class="download-info">
+                            <span>Last updated: April 5, 2025</span>
+                            <span class="download-count">2.1K Downloads</span>
+                        </div>
+                        
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="remix-toolkit">
+                <div class="remix-toolkit-content">
+                    <h3>Remix Publishing Program</h3>
+                    <p>We offer a platform for talented modders to showcase and distribute their Remix creations. Our team provides technical support, optimization assistance, and marketing visibility for high-quality mods.</p>
+                    <p>If you've developed a Remix mod that enhances a classic game with ray tracing technology, we'd love to help you share it with a wider audience.</p>
+                    <a href="#" class="btn">Submit Your Mod</a>
+                </div>
+            </div>
+            
+            <div class="support-section">
+                <h3>Need Help With Your Mod?</h3>
+                <p>Our team is available to assist with technical issues, performance optimization, or general questions about our mods. Join our Discord community or reach out through our support channels.</p>
+                <a href="#" class="btn">Get Support</a>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Mods</h4>
+                    <ul>
+                        <li><a href="portal2rtx.html">Portal 2 with RTX</a></li>
+                        <li><a href="mods.html">Portal RTX AMD Mod</a></li>
+                        <li><a href="mods.html">Portal RTX Steam Deck Mod</a></li>
+                        <li><a href="mods.html">Remix Publishing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Mod Development</a></li>
+                        <li><a href="services.html">Performance Optimization</a></li>
+                        <li><a href="services.html">Technical Consulting</a></li>
+                        <li><a href="services.html">Community Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="index.html#about">Our Story</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="https://twitter.com/NightSightProd">Twitter</a></li>
+                        <li><a href="https://www.linkedin.com/company/nightsightproductions">LinkedIn</a></li>
+                        <li><a href="https://github.com/NightSightProductions">GitHub</a></li>
+                        <li><a href="https://www.instagram.com/NightSightProductions">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 NightSightProductions. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
