@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NightSightProductions - RTX Mods & Gaming Entertainment</title>
+    <meta property="og:site_name" content="NightSightProductions">
+    <meta property="og:url" content="https://nightsightproductions.github.io/">
+    <meta property="og:title" content="NightSightProductions">
+    <meta property="og:image" content="images/c-logo.png">
+    <meta property="og:description" content="RTX Mods & Gaming Entertainment">
+    <meta property="og:type" content="website">
+    <meta name="twitter:site" content="@NightSightProd">
+    <meta name="twitter:url" content="https://nightsightproductions.github.io/">
+    <meta name="twitter:title" content="NightSightProductions">
+    <meta name="twitter:description" content="RTX Mods & Gaming Entertainment">
+    <meta name="twitter:image" content="images/c-logo.png">
+    <meta name="twitter:type" content="website">
+    
     <style>
         :root {
             --primary-color: #8A2BE2; /* Vibrant purple */
@@ -21,300 +34,275 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
         }
         
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        .preloader {
+            align-items: center;
+            background: rgb(23, 22, 22);
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            left: 0;
+            position: fixed;
+            top: 0;
+            transition: opacity 0.3s linear;
+            width: 100%;
+            z-index: 9999;
         }
         
-        header::before {
-            content: '';
-            position: absolute;
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header and navigation */
+        .header {
+            background-color: #000;
+            padding: 1rem 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><circle fill="rgba(255,255,255,0.05)" cx="50" cy="50" r="30"/></svg>');
-            opacity: 0.3;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
         
         .logo-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
         }
         
         .logo-image-container {
-            height: 80px; /* Increased from 60px */
-            width: 80px; /* Increased from 60px */
+            height: 50px;
+            width: 50px;
             margin-right: 15px;
             background-color: #000;
             border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .logo-image {
-            height: 60px; /* Increased from 45px */
+            height: 40px;
             width: auto;
         }
         
         .logo {
-            font-size: 3rem; /* Increased from 2.5rem */
+            font-size: 1.8rem;
             font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
         
-        .tagline {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            background-color: rgba(0, 0, 0, 0.3);
-            padding: 1rem 0;
-        }
-        
-        nav ul {
+        .main-nav ul {
             display: flex;
-            justify-content: center;
             list-style: none;
+            gap: 1.5rem;
         }
         
-        nav li {
-            margin: 0 1.5rem;
-        }
-        
-        nav a {
+        .main-nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            position: relative;
-            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
         }
         
-        nav a:hover {
+        .main-nav a:hover, .main-nav a.active {
+            border-color: var(--accent-color);
             color: var(--accent-color);
         }
         
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: width 0.3s;
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
+                        url('https://via.placeholder.com/1600x700') no-repeat center center;
+            background-size: cover;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
         }
         
-        nav a:hover::after {
-            width: 100%;
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 1rem;
         }
         
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Section styles */
+        .section-header {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
         }
         
         section {
             margin-bottom: 4rem;
         }
         
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            bottom: -10px;
-            left: 0;
-            background-color: var(--primary-color);
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            height: 300px;
-            background-color: #000; /* This was already black, but I'm ensuring it's explicitly set */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-        
-        .about-logo-image {
-            max-width: 60%;
-            max-height: 60%;
-            object-fit: contain;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background-color: var(--card-background);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        .service-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-            background-color: var(--card-background);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-        
-        .portfolio-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
-        }
-        
+        /* Featured mod section */
         .featured-mod {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/400');
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://via.placeholder.com/1200x400') no-repeat center center;
             background-size: cover;
-            background-position: center;
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: 5px;
             margin-bottom: 3rem;
             text-align: center;
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .featured-mod h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            color: var(--accent-color);
         }
         
         .featured-mod p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto 2rem;
         }
         
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            font-weight: bold;
-            padding: 0.8rem 2rem;
+        /* Mods grid */
+        .mods-list {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .mods-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .mod-card {
+            background-color: var(--card-background);
             border-radius: 5px;
-            text-decoration: none;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+        .mod-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
         }
         
-        .team-grid {
+        .mod-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .mod-details {
+            padding: 1.5rem;
+        }
+        
+        .mod-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        /* Services section */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
         
+        .service-card {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .service-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        /* Team section */
         .team-member {
             background-color: var(--card-background);
-            border-radius: 10px;
+            border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .team-photo {
-            height: 250px;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .team-info {
@@ -322,9 +310,9 @@
         }
         
         .team-name {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.3rem;
-            color: var(--accent-color);
+            color: var (--accent-color);
         }
         
         .team-role {
@@ -333,258 +321,280 @@
             margin-bottom: 1rem;
         }
         
-        .social-links {
-            display: flex;
-            gap: 1rem;
+        /* News section */
+        .news-section {
+            margin-bottom: 2rem;
         }
         
-        .social-link {
-            color: var(--text-color);
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .news-card {
+            background-color: var(--card-background);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .news-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .news-details {
+            padding: 1.5rem;
+        }
+        
+        .news-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-title {
             font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        
-        .social-link:hover {
+            margin-bottom: 0.5rem;
             color: var(--accent-color);
         }
         
-        .contact-content {
+        .all-news-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .all-news-link a {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .all-news-link a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Social connect bar */
+        .connect-bar {
+            background-color: var(--card-background);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 3rem;
+        }
+        
+        .connect-bar ul {
             display: flex;
-            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
             gap: 2rem;
         }
         
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-form {
-            flex: 2;
-            min-width: 300px;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #444;
-            background-color: #1a1a1a;
+        .connect-bar a {
+            font-size: 2.5rem;
             color: var(--text-color);
-            border-radius: 5px;
-            font-family: inherit;
-            transition: border-color 0.3s;
+            transition: color 0.3s, transform 0.3s;
+            display: block;
         }
         
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
+        .connect-bar a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
         }
         
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
-        }
-        
+        /* Footer */
         footer {
             background-color: #080808;
             padding: 3rem 1.5rem;
-            text-align: center;
+            border-top: 1px solid #222;
         }
         
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
-        .footer-logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-logo-image-container {
-            height: 40px;
-            width: 40px;
-            margin-right: 10px;
-            background-color: #000;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .footer-logo-image {
-            height: 30px;
-            width: auto;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin-bottom: 3rem;
         }
         
-        .footer-links a {
-            color: var(--text-color);
+        .footer-column h4 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column a {
+            color: #aaa;
             text-decoration: none;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
         
-        .footer-links a:hover {
+        .footer-column a:hover {
             color: var(--accent-color);
         }
         
         .copyright {
-            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
             color: #666;
+            padding-top: 1.5rem;
+            border-top: 1px solid #222;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
             font-weight: bold;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
         }
         
-        .upcoming {
-            background-color: rgba(138, 43, 226, 0.1);
-            border-left: 4px solid var(--primary-color);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 0 5px 5px 0;
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
         }
         
-        .upcoming h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        /* Purple glow effects */
-        .portfolio-item:hover {
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
-        }
-        
+        /* Mobile responsive */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2rem; /* Reduced from 2.5rem for better mobile fit */
-                white-space: normal; /* Allow text to wrap if needed */
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
             }
             
             .logo-container {
-                flex-direction: column;
-                padding: 0 10px; /* Add some padding on the sides */
+                margin-bottom: 1rem;
             }
             
-            .logo-image-container {
-                margin-right: 0;
-                margin-bottom: 10px;
-                height: 60px; /* Slightly smaller for mobile */
-                width: 60px;
+            .logo {
+                font-size: 1.5rem;
             }
             
-            .logo-image {
-                height: 45px;
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.5rem;
             }
             
-            /* New responsive styles for the header */
-            .tagline {
-                font-size: 1rem; /* Smaller tagline on mobile */
-                padding: 0 15px; /* Add padding to prevent text touching edges */
+            .hero {
+                height: 400px;
             }
             
-            nav li {
-                margin: 0 0.8rem; /* Less horizontal spacing between nav items */
+            .hero h1 {
+                font-size: 2rem;
             }
             
-            h2 {
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-header {
                 font-size: 1.6rem;
+            }
+            
+            .connect-bar ul {
+                gap: 1.5rem;
+            }
+            
+            .connect-bar a {
+                font-size: 2rem;
             }
         }
         
-        @media (max-width: 380px) {
-            .logo {
-                font-size: 1.7rem; /* Even smaller on very small screens */
+        @media (max-width: 576px) {
+            .hero {
+                height: 350px;
             }
             
-            .logo-image-container {
-                height: 50px;
-                width: 50px;
+            .featured-mod {
+                padding: 2rem 1rem;
             }
             
-            .logo-image {
-                height: 35px;
+            .featured-mod h3 {
+                font-size: 1.5rem;
+            }
+            
+            .section-header {
+                font-size: 1.4rem;
             }
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="logo-container">
-            <div class="logo-image-container">
-                <img src="images/c-logo.png" alt="NightSightProductions Logo" class="logo-image" />
+
+<body class="mod-lt">
+    <div class="preloader">
+        <img src="images/c-logo.png" alt="NightSightProductions" style="height: 100px; width: auto;">
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-image-container">
+                    <img src="images/c-logo.png" alt="NightSightProductions Logo" class="logo-image" />
+                </div>
+                <div class="logo">NightSightProductions</div>
             </div>
-            <div class="logo">NightSightProductions</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about" class="active">About</a></li>
+                    <li><a href="#mods">RTX Mods</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="tagline">Pushing the Boundaries of Gaming Technology</div>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#mods">RTX Mods</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
-    
-    <main>
+
+    <div class="wrapper">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Pushing the Boundaries of Gaming Technology</h1>
+                <p>Enhancing classic games with cutting-edge RTX technology</p>
+                <a href="#mods" class="btn">Explore Our Mods</a>
+            </div>
+        </div>
+
         <section id="about">
-            <h2>About Us</h2>
+            <h2 class="section-header">About Us</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>Here at NightSightProductions, we make entertainment for you and also believe in pushing the boundaries of technology. We're passionate about enhancing classic games with cutting-edge RTX technology, bringing new life to beloved titles.</p>
                     <p>Our team consists of talented developers, modders, and artists who share a common vision: to create immersive gaming experiences through the power of modern graphics technology.</p>
                     <p>From developing RTX mods for popular games to offering publishing services for RTX Remix creators, we're dedicated to bringing next-generation visual fidelity to both new and classic titles.</p>
                 </div>
-                <div class="about-image">
-                    <img src="images/c-logo.png" alt="NightSightProductions Logo" class="about-logo-image" />
-                </div>
             </div>
         </section>
         
-        <section id="mods">
-            <h2>Our RTX Mods</h2>
+        <section class="mods-list" id="mods">
+            <div class="mods-header">
+                <h2 class="section-header">RTX Mods</h2>
+            </div>
             
             <div class="featured-mod">
                 <h3>Portal 2 with RTX Remaster</h3>
@@ -592,45 +602,40 @@
                 <a href="portal2rtx.html" class="btn">Learn More</a>
             </div>
             
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="Portal RTX AMD Mod" />
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Portal RTX AMD Mod</h3>
+            <div class="mods-grid">
+                <div class="mod-card">
+                    <img src="https://via.placeholder.com/400/300" alt="Portal RTX AMD Mod" class="mod-image" />
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal RTX AMD Mod</h3>
                         <p>Enhanced performance optimization for AMD graphics cards.</p>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="Portal RTX Steam Deck Mod" />
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Portal RTX Steam Deck Mod</h3>
+                <div class="mod-card">
+                    <img src="https://via.placeholder.com/400/300" alt="Portal RTX Steam Deck Mod" class="mod-image" />
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
                         <p>Optimized for the portable Steam Deck hardware.</p>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="Portal 2 RTX" />
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Portal 2 with RTX</h3>
+                <div class="mod-card">
+                    <img src="https://via.placeholder.com/400/300" alt="Portal 2 RTX" class="mod-image" />
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal 2 with RTX</h3>
                         <p>Coming Soon - Our most ambitious project yet.</p>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="RTX Remix" />
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">RTX Remix Publishing</h3>
+                <div class="mod-card">
+                    <img src="https://via.placeholder.com/400/300" alt="RTX Remix" class="mod-image" />
+                    <div class="mod-details">
+                        <h3 class="mod-title">RTX Remix Publishing</h3>
                         <p>Supporting the RTX modding community.</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="upcoming">
-                <h3>Upcoming Projects</h3>
-                <p>We're constantly working on new RTX mods and enhancements for classic games. Stay tuned for announcements about our future projects and collaborations. Follow us on social media to be the first to know about our upcoming releases.</p>
-            </div>
         </section>
         
         <section id="services">
-            <h2>Our Services</h2>
+            <h2 class="section-header">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🎮</div>
@@ -652,27 +657,101 @@
                     <h3 class="service-title">Technical Consulting</h3>
                     <p>Expert advice and guidance for developers looking to implement RTX technology in their projects.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3 class="service-title">Community Support</h3>
-                    <p>Resources, tutorials, and support for the RTX modding community to enhance their projects.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎓</div>
-                    <h3 class="service-title">RTX Workshops</h3>
-                    <p>Educational sessions and hands-on training for aspiring RTX modders and developers.</p>
-                </div>
             </div>
         </section>
         
         <section id="team">
-            <h2>Meet Our CEO</h2>
-            <div class="team-grid">
-                <div class="team-member" style="max-width: 600px; margin: 0 auto;">
-                    <div class="team-photo">
-                        <img src="images/King Vulpes.png" alt="King Vulpes" style="width: 100%; height: 100%; object-fit: cover;" />
+            <h2 class="section-header">Meet Our CEO</h2>
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="images/King Vulpes.png" alt="King Vulpes" />
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">King Vulpes</h3>
+                    <div class="team-role">CEO & Founder</div>
+                    <p>Visionary leader pioneering the future of RTX modding and gaming technology. With a passion for innovation and gaming excellence, King Vulpes leads NightSightProductions in pushing the boundaries of what's possible in game enhancement technology.</p>
+                </div>
+            </div>
+        </section>
+        
+        <h2 class="section-header">Latest News</h2>
+        <section class="news-section">
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="https://via.placeholder.com/400/300" alt="News 1" class="news-image" />
+                    <div class="news-details">
+                        <div class="news-date">April 5, 2025</div>
+                        <h3 class="news-title">Portal 2 RTX Development Update</h3>
+                        <p>Check out our latest progress on the Portal 2 RTX mod with new screenshots and technical details.</p>
                     </div>
-                    <div class="team-info">
-                        <h3 class="team-name">King Vulpes</h3>
-                        <div class="team-role">CEO & Founder</div>
-                        <p>Visionary leader pioneering the future of RTX modding and gaming technology. With a passion for innovation and gaming excellence, King Vulpes leads NightSightProductions in pushing the
+                </div>
+                <div class="news-card">
+                    <img src="https://via.placeholder.com/400/300" alt="News 2" class="news-image" />
+                    <div class="news-details">
+                        <div class="news-date">March 28, 2025</div>
+                        <h3 class="news-title">Steam Deck Optimization Guide</h3>
+                        <p>Our team shares tips for optimizing RTX mods for the Steam Deck hardware.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://via.placeholder.com/400/300" alt="News 3" class="news-image" />
+                    <div class="news-details">
+                        <div class="news-date">March 15, 2025</div>
+                        <h3 class="news-title">Community Spotlight: RTX Remix</h3>
+                        <p>Highlighting the best community creations using NVIDIA's RTX Remix technology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="all-news-link">
+            <a href="#">More News</a>
+        </div>
+        
+        <section class="connect-bar">
+            <ul>
+                <li><a href="https://discord.gg/GKacpbpyQb" target="_blank"><i class="mdi mdi-discord"></i></a></li>
+                <li><a href="https://github.com/nightsightproductions" target="_blank"><i class="mdi mdi-github"></i></a></li>
+                <li><a href="https://twitter.com/NightSightProd" target="_blank"><i class="mdi mdi-twitter"></i></a></li>
+                <li><a href="https://www.youtube.com/@NightSightProductions" target="_blank"><i class="mdi mdi-youtube"></i></a></li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>RTX Mods</h4>
+                    <ul>
+                        <li><a href="portal2rtx.html">Portal 2 with RTX</a></li>
+                        <li><a href="#">Portal RTX AMD Mod</a></li>
+                        <li><a href="#">Portal RTX Steam Deck Mod</a></li>
+                        <li><a href="#">RTX Remix Publishing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">RTX Mod Development</a></li>
+                        <li><a href="#services">Performance Optimization</a></li>
+                        <li><a href="#services">Technical Consulting</a></li>
+                        <li><a href="#services">Community Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 NightSightProductions. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
