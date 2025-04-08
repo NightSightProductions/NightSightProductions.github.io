@@ -272,41 +272,81 @@
         }
         
         /* Team section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 0 auto;
+        }
+
         .team-member {
             background-color: var(--card-background);
             border-radius: 5px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            max-width: 600px;
-            margin: 0 auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
         }
-        
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.2);
+        }
+
         .team-photo {
-            height: 300px;
+            height: 220px; /* Reduced height */
             overflow: hidden;
         }
-        
+
         .team-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .team-info {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
-        
+
         .team-name {
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-            color: var (--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--accent-color);
         }
-        
+
         .team-role {
             font-size: 0.9rem;
-            color: #999;
-            margin-bottom: 1rem;
+            color: #777;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .team-info p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .team-photo {
+                height: 180px;
+            }
+            
+            .team-info {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
         }
         
         /* News section */
@@ -647,15 +687,51 @@
         </section>
         
         <section id="team">
-            <h2 class="section-header">Meet Our CEO</h2>
-            <div class="team-member">
-                <div class="team-photo">
-                    <img src="images/King Vulpes.png" alt="King Vulpes" />
+            <h2 class="section-header">Meet Our Team</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="images/King Vulpes.png" alt="King Vulpes" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">King Vulpes</h3>
+                        <div class="team-role">CEO & Founder</div>
+                        <p>Visionary leader pioneering the future of RTX modding and gaming technology.</p>
+                    </div>
                 </div>
-                <div class="team-info">
-                    <h3 class="team-name">King Vulpes</h3>
-                    <div class="team-role">CEO & Founder</div>
-                    <p>Visionary leader pioneering the future of RTX modding and gaming technology. With a passion for innovation and gaming excellence, King Vulpes leads NightSightProductions in pushing the boundaries of what's possible in game enhancement technology.</p>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Technical Director</div>
+                        <p>Experienced graphics programmer with expertise in ray tracing technology.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Art Director</div>
+                        <p>Skilled artist focusing on enhancing visual quality while preserving artistic intent.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://via.placeholder.com/300x300" alt="Team Member" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Team Member</h3>
+                        <div class="team-role">Community Manager</div>
+                        <p>Passionate gamer bridging the gap between our team and the community.</p>
+                    </div>
                 </div>
             </div>
         </section>
