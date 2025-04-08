@@ -653,30 +653,57 @@
         }
 
         .game-details {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            display: none;
         }
 
-        .game-title {
+        .game-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.9));
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            transform: translateY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .game-card:hover .game-overlay {
+            transform: translateY(-10px);
+        }
+
+        .game-overlay .game-title {
             font-size: 1.3rem;
             margin-bottom: 0.3rem;
-            color: var(--accent-color);
+            color: white;
         }
 
-        .game-category {
+        .game-overlay .game-category {
             font-size: 0.9rem;
-            color: #777;
+            color: #ddd;
             margin-bottom: 0.8rem;
             font-style: italic;
         }
 
-        .game-btn {
-            margin-top: auto;
-            align-self: flex-start;
+        .game-overlay p {
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            color: #ccc;
+        }
+
+        .game-overlay .game-btn {
+            background-color: rgba(138, 43, 226, 0.8);
+            backdrop-filter: blur(5px);
             padding: 0.6rem 1.5rem;
             font-size: 0.9rem;
+            color: white;
+            border: none;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .game-overlay .game-btn:hover {
+            background-color: var(--accent-color);
         }
 
         @media (max-width: 768px) {
@@ -773,35 +800,35 @@
             <div class="games-grid">
                 <div class="game-card">
                     <div class="game-image-container">
-                        <img src="https://via.placeholder.com/600x900" alt="Game Title" class="game-image" />
-                    </div>
-                    <div class="game-details">
-                        <h3 class="game-title">Project Nexus</h3>
-                        <p class="game-category">Action RPG</p>
-                        <p>A next-generation action RPG featuring cutting-edge visuals and deep storytelling.</p>
-                        <a href="#" class="btn game-btn">Coming Soon</a>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <div class="game-image-container">
-                        <img src="https://via.placeholder.com/600x900" alt="Game Title" class="game-image" />
-                    </div>
-                    <div class="game-details">
-                        <h3 class="game-title">Void Runner</h3>
-                        <p class="game-category">Science Fiction Adventure</p>
-                        <p>Explore the far reaches of space in this immersive sci-fi adventure.</p>
-                        <a href="#" class="btn game-btn">Coming Soon</a>
+                        <img src="images/P2RTXVertGrid.jpg" alt="Portal 2 RTX" class="game-image" />
+                        <div class="game-overlay">
+                            <h3 class="game-title">Portal 2 with RTX</h3>
+                            <p class="game-category">Ray Traced Enhancement</p>
+                            <p>Experience Aperture Science like never before with fully ray-traced lighting and reflections.</p>
+                            <a href="portal2rtx.html" class="btn game-btn">Learn More</a>
+                        </div>
                     </div>
                 </div>
                 <div class="game-card">
                     <div class="game-image-container">
                         <img src="https://via.placeholder.com/600x900" alt="Game Title" class="game-image" />
+                        <div class="game-overlay">
+                            <h3 class="game-title">Void Runner</h3>
+                            <p class="game-category">Science Fiction Adventure</p>
+                            <p>Explore the far reaches of space in this immersive sci-fi adventure.</p>
+                            <a href="#" class="btn game-btn">Coming Soon</a>
+                        </div>
                     </div>
-                    <div class="game-details">
-                        <h3 class="game-title">Shadows of Eternity</h3>
-                        <p class="game-category">Atmospheric Horror</p>
-                        <p>A psychological horror experience with stunning visual effects and immersive gameplay.</p>
-                        <a href="#" class="btn game-btn">Learn More</a>
+                </div>
+                <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="https://via.placeholder.com/600x900" alt="Game Title" class="game-image" />
+                        <div class="game-overlay">
+                            <h3 class="game-title">Shadows of Eternity</h3>
+                            <p class="game-category">Atmospheric Horror</p>
+                            <p>A psychological horror experience with stunning visual effects and immersive gameplay.</p>
+                            <a href="#" class="btn game-btn">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -918,10 +945,10 @@
         
         <section class="connect-bar">
             <ul>
-                <li><a href="https://discord.gg/GKacpbpyQb" target="_blank"><i class="mdi mdi-discord"></i></a></li>
-                <li><a href="https://github.com/nightsightproductions" target="_blank"><i class="mdi mdi-github"></i></a></li>
-                <li><a href="https://twitter.com/NightSightProd" target="_blank"><i class="mdi mdi-twitter"></i></a></li>
-                <li><a href="https://www.youtube.com/@NightSightProductions" target="_blank"><i class="mdi mdi-youtube"></i></a></li>
+                <li><a href="https://discord.gg/GKacpbpyQb" target="_blank"><i class="mdi mdi-discord"></i></li>
+                <li><a href="https://github.com/nightsightproductions" target="_blank"><i class="mdi mdi-github"></i></li>
+                <li><a href="https://twitter.com/NightSightProd" target="_blank"><i class="mdi mdi-twitter"></i></li>
+                <li><a href="https://www.youtube.com/@NightSightProductions" target="_blank"><i class="mdi mdi-youtube"></i></li>
             </ul>
         </section>
     </div>
@@ -960,9 +987,9 @@
                     <h4>Our Games</h4>
                     <ul>
                         <li><a href="portal2rtx.html">Portal 2 with RTX</a></li>
-                        <li><a href="#">Project Nexus</a></li>
                         <li><a href="#">Void Runner</a></li>
                         <li><a href="#">Shadows of Eternity</a></li>
+                        <li><a href="#">RTX Remix Publishing</a></li>
                     </ul>
                 </div>
             </div>
