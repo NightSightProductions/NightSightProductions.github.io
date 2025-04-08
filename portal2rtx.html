@@ -315,14 +315,24 @@
             }
             
             /* Make the Portal 2 RTX logo responsive */
+            .project-logo {
+                margin: 1.5rem auto !important; /* Reduced margin for mobile */
+            }
+            
             .project-logo img {
-                max-height: 180px; /* Smaller on mobile */
+                max-height: 150px; /* Smaller on mobile */
+                max-width: 90% !important; /* Prevent overflow */
             }
             
             /* New responsive styles for the header */
             .tagline {
                 font-size: 1rem; /* Smaller tagline on mobile */
                 padding: 0 15px; /* Add padding to prevent text touching edges */
+                margin-bottom: 1rem; /* Less bottom margin */
+            }
+            
+            nav {
+                padding: 0.8rem 0; /* Reduced padding */
             }
             
             nav ul {
@@ -332,7 +342,12 @@
             }
             
             nav li {
-                margin: 0 0.8rem; /* Less horizontal spacing between nav items */
+                margin: 0; /* Remove horizontal margin */
+            }
+            
+            /* Make text more readable on mobile */
+            p {
+                font-size: 0.95rem;
             }
             
             h2 {
@@ -341,13 +356,31 @@
             
             /* Improve feature grid on mobile */
             .feature-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
                 gap: 1.5rem;
             }
             
+            .feature-card {
+                padding: 1.5rem; /* Less padding in cards */
+            }
+            
             /* Make portal divider smaller on mobile */
+            .portal-divider {
+                margin: 2rem 0; /* Less vertical margin */
+            }
+            
             .portal-divider .circle {
                 width: 35px;
                 height: 35px;
+            }
+            
+            /* Better gallery layout on mobile */
+            .gallery {
+                grid-template-columns: 1fr; /* Single column gallery on mobile */
+            }
+            
+            .gallery-item {
+                height: 180px; /* Slightly shorter gallery items */
             }
         }
         
@@ -367,15 +400,61 @@
             }
             
             .project-logo img {
-                max-height: 140px; /* Even smaller on very small screens */
+                max-height: 120px; /* Even smaller on very small screens */
+                max-width: 95% !important;
             }
             
+            /* Prevent buttons from overlapping on small screens */
             .btn, .btn-orange {
                 padding: 0.7rem 1.5rem; /* Smaller buttons */
                 font-size: 0.9rem;
-                display: block;
+                display: block !important;
                 margin: 0.8rem auto !important; /* Force buttons to stack */
                 max-width: 200px;
+            }
+            
+            /* Smaller headings on very small screens */
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            /* Smaller features and spacing */
+            .feature-card {
+                padding: 1.2rem;
+            }
+            
+            .feature-icon {
+                font-size: 2rem;
+                margin-bottom: 0.7rem;
+            }
+            
+            /* Reduce spacing in overview section */
+            section {
+                margin-bottom: 3rem;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        /* Add a new breakpoint for medium-small screens */
+        @media (min-width: 381px) and (max-width: 576px) {
+            .project-logo img {
+                max-height: 130px;
+            }
+            
+            /* Fix button layout on medium-small screens */
+            .btn, .btn-orange {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+                display: block !important;
+                margin: 0.8rem auto !important;
+                max-width: 230px;
             }
         }
     </style>
