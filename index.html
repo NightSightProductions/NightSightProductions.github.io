@@ -497,32 +497,53 @@
         
         @media (max-width: 768px) {
             .logo {
-                font-size: 2.5rem; /* Increased from 2rem */
+                font-size: 2rem; /* Reduced from 2.5rem for better mobile fit */
+                white-space: normal; /* Allow text to wrap if needed */
             }
             
             .logo-container {
                 flex-direction: column;
+                padding: 0 10px; /* Add some padding on the sides */
             }
             
             .logo-image-container {
                 margin-right: 0;
                 margin-bottom: 10px;
-                height: 70px; /* Increased for mobile too */
-                width: 70px; /* Increased for mobile too */
+                height: 60px; /* Slightly smaller for mobile */
+                width: 60px;
             }
             
             .logo-image {
-                height: 50px; /* Increased for mobile too */
+                height: 45px;
             }
             
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+            /* New responsive styles for the header */
+            .tagline {
+                font-size: 1rem; /* Smaller tagline on mobile */
+                padding: 0 15px; /* Add padding to prevent text touching edges */
+            }
+            
+            nav li {
+                margin: 0 0.8rem; /* Less horizontal spacing between nav items */
             }
             
             h2 {
                 font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .logo {
+                font-size: 1.7rem; /* Even smaller on very small screens */
+            }
+            
+            .logo-image-container {
+                height: 50px;
+                width: 50px;
+            }
+            
+            .logo-image {
+                height: 35px;
             }
         }
     </style>
@@ -654,69 +675,4 @@
                     <div class="team-info">
                         <h3 class="team-name">King Vulpes</h3>
                         <div class="team-role">CEO & Founder</div>
-                        <p>Visionary leader pioneering the future of RTX modding and gaming technology. With a passion for innovation and gaming excellence, King Vulpes leads NightSightProductions in pushing the boundaries of what's possible in game enhancement.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">📱</a>
-                            <a href="#" class="social-link">💼</a>
-                            <a href="#" class="social-link">👑</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>Have a question about our mods? Interested in collaborating on an RTX project? We'd love to hear from you!</p>
-                    <p><strong>Email:</strong> <a href="mailto:NightSightProductions@gmail.com">NightSightProductions@gmail.com</a></p>
-                    <p><strong>Discord:</strong> Join our server: <a href="https://discord.gg/GKacpbpyQb" target="_blank">discord.gg/GKacpbpyQb</a></p>
-                    <p><strong>GitHub:</strong> <a href="https://github.com/nightsightproductions" target="_blank">github.com/nightsightproductions</a></p>
-                    <p>We're always looking for talented developers and artists to join our team. If you're passionate about RTX technology and gaming, reach out to us!</p>
-                </div>
-                <div class="contact-form">
-                    <a href="mailto:NightSightProductions@gmail.com" class="btn" style="display: inline-block; margin-top: 20px;">
-                        Contact via Email
-                    </a>
-                    <p style="margin-top: 20px;">Or reach out to us on 
-                        <a href="https://discord.gg/GKacpbpyQb" target="_blank">Discord</a>, 
-                        <a href="https://github.com/nightsightproductions" target="_blank">GitHub</a>, 
-                        or any of our social platforms.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo-container">
-                <div class="footer-logo-image-container">
-                    <img src="images/c-logo.png" alt="NightSightProductions Logo" class="footer-logo-image" />
-                </div>
-                <div class="footer-logo">NightSightProductions</div>
-            </div>
-            <p>Pushing the Boundaries of Gaming Technology</p>
-            <div class="footer-links">
-                <a href="#about">About</a>
-                <a href="#mods">RTX Mods</a>
-                <a href="#services">Services</a>
-                <a href="#team">Team</a>
-                <a href="#contact">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-            <div class="social-links" style="justify-content: center; margin: 1rem 0;">
-                <a href="#" class="social-link">Discord</a>
-                <a href="#" class="social-link">GitHub</a>
-                <a href="#" class="social-link">Twitter</a>
-                <a href="#" class="social-link">YouTube</a>
-            </div>
-            <div class="copyright" style="font-weight: bold;">
-                &copy; 2025 NightSightProductions LLC. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+                        <p>Visionary leader pioneering the future of RTX modding and gaming technology. With a passion for innovation and gaming excellence, King Vulpes leads NightSightProductions in pushing the

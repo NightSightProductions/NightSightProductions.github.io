@@ -300,11 +300,29 @@
             
             .logo-container {
                 flex-direction: column;
+                padding: 0 10px; /* Add some padding on the sides */
             }
             
             .logo-image-container {
                 margin-right: 0;
                 margin-bottom: 10px;
+                height: 60px; /* Slightly smaller for mobile */
+                width: 60px;
+            }
+            
+            .logo-image {
+                height: 45px;
+            }
+            
+            /* Make the Portal 2 RTX logo responsive */
+            .project-logo img {
+                max-height: 180px; /* Smaller on mobile */
+            }
+            
+            /* New responsive styles for the header */
+            .tagline {
+                font-size: 1rem; /* Smaller tagline on mobile */
+                padding: 0 15px; /* Add padding to prevent text touching edges */
             }
             
             nav ul {
@@ -313,8 +331,51 @@
                 gap: 1rem;
             }
             
+            nav li {
+                margin: 0 0.8rem; /* Less horizontal spacing between nav items */
+            }
+            
             h2 {
                 font-size: 1.6rem;
+            }
+            
+            /* Improve feature grid on mobile */
+            .feature-grid {
+                gap: 1.5rem;
+            }
+            
+            /* Make portal divider smaller on mobile */
+            .portal-divider .circle {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        
+        /* For very small screens */
+        @media (max-width: 380px) {
+            .logo {
+                font-size: 1.7rem; /* Even smaller on very small screens */
+            }
+            
+            .logo-image-container {
+                height: 50px;
+                width: 50px;
+            }
+            
+            .logo-image {
+                height: 35px;
+            }
+            
+            .project-logo img {
+                max-height: 140px; /* Even smaller on very small screens */
+            }
+            
+            .btn, .btn-orange {
+                padding: 0.7rem 1.5rem; /* Smaller buttons */
+                font-size: 0.9rem;
+                display: block;
+                margin: 0.8rem auto !important; /* Force buttons to stack */
+                max-width: 200px;
             }
         }
     </style>
