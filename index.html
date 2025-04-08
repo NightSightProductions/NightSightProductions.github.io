@@ -571,6 +571,148 @@
                 font-size: 1.4rem;
             }
         }
+
+        /* Games grid */
+        .games-list {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .games-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-game {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://via.placeholder.com/1200x400') no-repeat center center;
+            background-size: cover;
+            padding: 3rem;
+            border-radius: 5px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-game h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .featured-game p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: white;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .game-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(138, 43, 226, 0.15);
+        }
+
+        .game-image-container {
+            position: relative;
+            height: 0;
+            padding-top: 150%; /* 600x900 aspect ratio */
+            overflow: hidden;
+        }
+
+        .game-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .game-card:hover .game-image {
+            transform: scale(1.05);
+        }
+
+        .game-details {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .game-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: var(--accent-color);
+        }
+
+        .game-category {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .game-btn {
+            margin-top: auto;
+            align-self: flex-start;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .featured-game {
+                padding: 2rem;
+            }
+            
+            .featured-game h3 {
+                font-size: 1.7rem;
+            }
+            
+            .featured-game p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .featured-game {
+                padding: 1.5rem;
+            }
+            
+            .featured-game h3 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -588,7 +730,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#about" class="active">About</a></li>
-                    <li><a href="#mods">RTX Mods</a></li>
+                    <li><a href="#mods">Games</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -617,44 +759,49 @@
             </div>
         </section>
         
-        <section class="mods-list" id="mods">
-            <div class="mods-header">
-                <h2 class="section-header">RTX Mods</h2>
+        <section class="games-list" id="mods">
+            <div class="games-header">
+                <h2 class="section-header">Our Games & Projects</h2>
             </div>
             
-            <div class="featured-mod">
+            <div class="featured-game">
                 <h3>Portal 2 with RTX Remaster</h3>
                 <p>Our currently in-development flagship project aims to bring the power of RTX ray tracing to Valve's beloved Portal 2, enhancing its visual fidelity while maintaining its iconic art style and atmosphere.</p>
                 <a href="portal2rtx.html" class="btn">Learn More</a>
             </div>
             
-            <div class="mods-grid">
-                <div class="mod-card">
-                    <img src="https://via.placeholder.com/400/300" alt="Portal RTX AMD Mod" class="mod-image" />
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX AMD Mod</h3>
-                        <p>Enhanced performance optimization for AMD graphics cards.</p>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="https://via.placeholder.com/600x900" alt="Game Title" class="game-image" />
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Project Nexus</h3>
+                        <p class="game-category">Action RPG</p>
+                        <p>A next-generation action RPG featuring cutting-edge visuals and deep storytelling.</p>
+                        <a href="#" class="btn game-btn">Coming Soon</a>
                     </div>
                 </div>
-                <div class="mod-card">
-                    <img src="https://via.placeholder.com/400/300" alt="Portal RTX Steam Deck Mod" class="mod-image" />
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
-                        <p>Optimized for the portable Steam Deck hardware.</p>
+                <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="https://via.placeholder.com/600x900" alt="Game Title" class="game-image" />
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Void Runner</h3>
+                        <p class="game-category">Science Fiction Adventure</p>
+                        <p>Explore the far reaches of space in this immersive sci-fi adventure.</p>
+                        <a href="#" class="btn game-btn">Coming Soon</a>
                     </div>
                 </div>
-                <div class="mod-card">
-                    <img src="https://via.placeholder.com/400/300" alt="Portal 2 RTX" class="mod-image" />
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal 2 with RTX</h3>
-                        <p>Coming Soon - Our most ambitious project yet.</p>
+                <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="https://via.placeholder.com/600x900" alt="Game Title" class="game-image" />
                     </div>
-                </div>
-                <div class="mod-card">
-                    <img src="https://via.placeholder.com/400/300" alt="RTX Remix" class="mod-image" />
-                    <div class="mod-details">
-                        <h3 class="mod-title">RTX Remix Publishing</h3>
-                        <p>Supporting the RTX modding community.</p>
+                    <div class="game-details">
+                        <h3 class="game-title">Shadows of Eternity</h3>
+                        <p class="game-category">Atmospheric Horror</p>
+                        <p>A psychological horror experience with stunning visual effects and immersive gameplay.</p>
+                        <a href="#" class="btn game-btn">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -807,6 +954,15 @@
                         <li><a href="#team">Our Team</a></li>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Games</h4>
+                    <ul>
+                        <li><a href="portal2rtx.html">Portal 2 with RTX</a></li>
+                        <li><a href="#">Project Nexus</a></li>
+                        <li><a href="#">Void Runner</a></li>
+                        <li><a href="#">Shadows of Eternity</a></li>
                     </ul>
                 </div>
             </div>
