@@ -401,6 +401,93 @@
                 font-size: 1.6rem;
             }
         }
+        
+        /* Add this to your existing CSS */
+        .mods-slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+        }
+        
+        .mods-slider {
+            display: flex;
+            transition: transform 0.4s ease;
+            gap: 1rem;
+        }
+        
+        .mods-slide {
+            flex: 0 0 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .mods-slide {
+                flex: 0 0 calc(50% - 0.5rem);
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .mods-slide {
+                flex: 0 0 calc(33.333% - 0.67rem);
+            }
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+        }
+        
+        .slider-nav:hover {
+            background: var(--accent-color);
+        }
+        
+        .prev-btn {
+            left: -5px;
+        }
+        
+        .next-btn {
+            right: -5px;
+        }
+        
+        .mod-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .mod-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .mod-dot.active {
+            background: var(--primary-color);
+        }
+        
+        .mod-card {
+            height: 100%;
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -437,80 +524,99 @@
                 <p>Whether you're looking to experience ray tracing on AMD hardware or want to play Portal RTX on your Steam Deck, our mods provide solutions that make cutting-edge gaming experiences more accessible.</p>
             </div>
             
-            <h2 class="section-header">Featured Mods</h2>
+            <h2 class="section-header">Our Mods</h2>
             
-            <div class="mods-grid">
-                <div class="mod-card">
-                    <div style="position: relative;">
-                        <!-- Image removed -->
-                    </div>
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX AMD Mod</h3>
-                        <p>Enhanced performance optimization for AMD graphics cards, making NVIDIA's Portal RTX more accessible to AMD users.</p>
-                        
-                        <ul class="feature-list">
-                            <li>Optimized shaders for AMD RDNA architecture</li>
-                            <li>Performance improvements of up to 35%</li>
-                            <li>Reduced VRAM usage for better compatibility</li>
-                            <li>Compatible with FSR for additional performance</li>
-                        </ul>
-                        
-                        <div class="download-info">
-                            <span>Last updated: March 15, 2025</span>
-                            <!-- Download count removed -->
+            <div class="mods-slider-container">
+                <button class="slider-nav prev-btn" id="prev-mod"><i class="mdi mdi-chevron-left"></i></button>
+                <div class="mods-slider">
+                    <div class="mods-slide">
+                        <div class="mod-card">
+                            <div class="mod-details">
+                                <h3 class="mod-title">Portal RTX AMD Mod</h3>
+                                <p>Enhanced performance optimization for AMD graphics cards, making NVIDIA's Portal RTX more accessible to AMD users.</p>
+                                <div class="download-info">
+                                    <span>Last updated: March 15, 2025</span>
+                                </div>
+                                <a href="#" class="btn">Download</a>
+                            </div>
                         </div>
-                        
-                        <a href="#" class="btn">Download</a>
+                    </div>
+                    
+                    <div class="mods-slide">
+                        <div class="mod-card">
+                            <div class="mod-details">
+                                <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
+                                <p>Specially optimized version of Portal RTX for the Steam Deck hardware, with performance tweaks for portable play.</p>
+                                <div class="download-info">
+                                    <span>Last updated: April 1, 2025</span>
+                                </div>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mods-slide">
+                        <div class="mod-card">
+                            <div class="mod-details">
+                                <h3 class="mod-title">Half-Life Alyx Apple Silicon Mod</h3>
+                                <p>A performance optimized version of Half-Life Alyx for Apple Silicon Macs, enabling smooth gameplay on M1/M2/M3 hardware.</p>
+                                <div class="download-info">
+                                    <span>Last updated: April 3, 2025</span>
+                                </div>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mods-slide">
+                        <div class="mod-card">
+                            <div class="mod-details">
+                                <h3 class="mod-title">Portal RTX Intel Mod</h3>
+                                <p>Optimized version of Portal RTX for Intel Arc graphics cards, with specialized tweaks for Intel XeSS upscaling and ray tracing.</p>
+                                <div class="download-info">
+                                    <span>Last updated: March 25, 2025</span>
+                                </div>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mods-slide">
+                        <div class="mod-card">
+                            <div class="mod-details">
+                                <h3 class="mod-title">Portal Prelude RTX AMD Mod</h3>
+                                <p>Performance enhanced version of Portal Prelude RTX for AMD graphics cards, bringing ray tracing to this popular Portal mod.</p>
+                                <div class="download-info">
+                                    <span>Last updated: April 5, 2025</span>
+                                </div>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mods-slide">
+                        <div class="mod-card">
+                            <div class="mod-details">
+                                <h3 class="mod-title">Portal Prelude RTX Steam Deck Mod</h3>
+                                <p>Optimized version of Portal Prelude RTX for the Steam Deck, allowing portable play of this ray-traced Portal expansion.</p>
+                                <div class="download-info">
+                                    <span>Last updated: April 7, 2025</span>
+                                </div>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="mod-card">
-                    <div style="position: relative;">
-                        <!-- Image removed -->
-                    </div>
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
-                        <p>Specially optimized version of Portal RTX for the Steam Deck hardware, with performance tweaks for portable play.</p>
-                        
-                        <ul class="feature-list">
-                            <li>Custom settings profile for Steam Deck</li>
-                            <li>Battery-saving optimizations</li>
-                            <li>Streamlined shader compilation</li>
-                            <li>Improved input controls for Steam Deck</li>
-                        </ul>
-                        
-                        <div class="download-info">
-                            <span>Last updated: April 1, 2025</span>
-                            <!-- Download count removed -->
-                        </div>
-                        
-                        <a href="#" class="btn">Download</a>
-                    </div>
-                </div>
-                
-                <div class="mod-card">
-                    <div style="position: relative;">
-                        <!-- Image removed -->
-                    </div>
-                    <div class="mod-details">
-                        <h3 class="mod-title">Half-Life Alyx Apple Silicon Mod</h3>
-                        <p>A performance optimized version of Half-Life Alyx for Apple Silicon Macs, enabling smooth gameplay on M1/M2/M3 hardware.</p>
-                        
-                        <ul class="feature-list">
-                            <li>Metal API optimization for Apple GPUs</li>
-                            <li>Custom shaders for Apple Silicon</li>
-                            <li>Memory usage optimizations</li>
-                            <li>MacBook thermal management</li>
-                        </ul>
-                        
-                        <div class="download-info">
-                            <span>Last updated: April 3, 2025</span>
-                            <!-- Download count removed -->
-                        </div>
-                        
-                        <a href="#" class="btn">Download</a>
-                    </div>
-                </div>
+                <button class="slider-nav next-btn" id="next-mod"><i class="mdi mdi-chevron-right"></i></button>
+            </div>
+            
+            <div class="mod-indicators">
+                <span class="mod-dot active" data-index="0"></span>
+                <span class="mod-dot" data-index="1"></span>
+                <span class="mod-dot" data-index="2"></span>
+                <span class="mod-dot" data-index="3"></span>
+                <span class="mod-dot" data-index="4"></span>
+                <span class="mod-dot" data-index="5"></span>
             </div>
             
             <div class="support-section">
@@ -565,5 +671,74 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.mods-slider');
+            const prevBtn = document.getElementById('prev-mod');
+            const nextBtn = document.getElementById('next-mod');
+            const dots = document.querySelectorAll('.mod-dot');
+            
+            let currentIndex = 0;
+            let slidesPerView = 1;
+            
+            // Update slides per view based on screen width
+            function updateSlidesPerView() {
+                if (window.innerWidth >= 1200) {
+                    slidesPerView = 3;
+                } else if (window.innerWidth >= 768) {
+                    slidesPerView = 2;
+                } else {
+                    slidesPerView = 1;
+                }
+            }
+            
+            updateSlidesPerView();
+            window.addEventListener('resize', updateSlidesPerView);
+            
+            // Update the slider position
+            function updateSlider() {
+                const slideWidth = 100 / slidesPerView;
+                slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+                
+                // Enable/disable navigation buttons
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= dots.length - slidesPerView;
+                prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
+                nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                const maxIndex = dots.length - slidesPerView;
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = Math.min(index, dots.length - slidesPerView);
+                    updateSlider();
+                });
+            });
+            
+            // Initialize
+            updateSlider();
+        });
+    </script>
 </body>
 </html>
