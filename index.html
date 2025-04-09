@@ -904,6 +904,69 @@
             margin-bottom: 1.5rem;
             flex-grow: 1;
         }
+
+        /* Replace slider styles with featured mods grid */
+        .mods-featured {
+            margin-bottom: 3rem;
+        }
+        
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .mod-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .mod-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.15);
+        }
+        
+        .mod-details {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mod-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .mod-details p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .view-all-mods {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .mods-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .mods-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -979,73 +1042,39 @@
         
         <section class="mods-list" id="mods-section">
     <div class="mods-header">
-        <h2 class="section-header">Our Mods</h2>
+        <h2 class="section-header">Featured Mods</h2>
     </div>
     
-    <div class="mods-slider-container">
-        <button class="slider-nav prev-btn" id="prev-mod"><i class="mdi mdi-chevron-left"></i></button>
-        <div class="mods-slider">
-            <div class="mods-slide">
-                <div class="mod-card">
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX AMD Mod</h3>
-                        <p>Enhanced performance optimization for AMD graphics cards, making NVIDIA's Portal RTX more accessible to AMD users.</p>
-                        <a href="https://github.com/NightSightProductions/Portal-RTX-AMD-mod" class="btn" target="_blank">Download</a>
-                    </div>
+    <div class="mods-featured">
+        <div class="mods-grid">
+            <div class="mod-card">
+                <div class="mod-details">
+                    <h3 class="mod-title">Portal RTX AMD Mod</h3>
+                    <p>Enhanced performance optimization for AMD graphics cards, making NVIDIA's Portal RTX more accessible to AMD users.</p>
+                    <a href="https://github.com/NightSightProductions/Portal-RTX-AMD-mod" class="btn" target="_blank">Download</a>
                 </div>
             </div>
             
-            <div class="mods-slide">
-                <div class="mod-card">
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
-                        <p>Specially optimized version of Portal RTX for the Steam Deck hardware, with performance tweaks for portable play.</p>
-                        <a href="https://github.com/NightSightProductions/Portal-RTX-Steam-Deck-mod" class="btn" target="_blank">Download</a>
-                    </div>
+            <div class="mod-card">
+                <div class="mod-details">
+                    <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
+                    <p>Specially optimized version of Portal RTX for the Steam Deck hardware, with performance tweaks for portable play.</p>
+                    <a href="https://github.com/NightSightProductions/Portal-RTX-Steam-Deck-mod" class="btn" target="_blank">Download</a>
                 </div>
             </div>
             
-            <div class="mods-slide">
-                <div class="mod-card">
-                    <div class="mod-details">
-                        <h3 class="mod-title">Half-Life Alyx Apple Silicon Mod</h3>
-                        <p>A performance optimized version of Half-Life Alyx for Apple Silicon Macs, enabling smooth gameplay on M1/M2/M3 hardware.</p>
-                        <a href="https://github.com/NightSightProductions/Half-Life-Alyx-Apple-Silicon-Mod" class="btn" target="_blank">Download</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mods-slide">
-                <div class="mod-card">
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX Intel Mod</h3>
-                        <p>Optimized version of Portal RTX for Intel Arc graphics cards, with specialized tweaks for Intel hardware to improve ray tracing performance.</p>
-                        <a href="https://github.com/NightSightProductions/Portal-RTX-Intel-mod" class="btn" target="_blank">Download</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mods-slide">
-                <div class="mod-card">
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal Prelude RTX AMD Mod</h3>
-                        <p>Performance enhanced version of Portal Prelude RTX for AMD graphics cards, bringing ray tracing to this popular Portal mod.</p>
-                        <a href="https://github.com/NightSightProductions/Portal-Prelude-RTX-AMD-mod" class="btn" target="_blank">Download</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mods-slide">
-                <div class="mod-card">
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal Prelude RTX Steam Deck Mod</h3>
-                        <p>Optimized version of Portal Prelude RTX for the Steam Deck, allowing portable play of this ray-traced Portal expansion.</p>
-                        <a href="https://github.com/NightSightProductions/Portal-Prelude-RTX-Steam-Deck-mod" class="btn" target="_blank">Download</a>
-                    </div>
+            <div class="mod-card">
+                <div class="mod-details">
+                    <h3 class="mod-title">Half-Life Alyx Apple Silicon Mod</h3>
+                    <p>A performance optimized version of Half-Life Alyx for Apple Silicon Macs, enabling smooth gameplay on M1/M2/M3 hardware.</p>
+                    <a href="https://github.com/NightSightProductions/Half-Life-Alyx-Apple-Silicon-Mod" class="btn" target="_blank">Download</a>
                 </div>
             </div>
         </div>
-        <button class="slider-nav next-btn" id="next-mod"><i class="mdi mdi-chevron-right"></i></button>
+        
+        <div class="view-all-mods">
+            <a href="mods.html" class="btn">View All Mods</a>
+        </div>
     </div>
 </section>
         
@@ -1127,62 +1156,5 @@
             });
         });
     </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const slider = document.querySelector('.mods-slider');
-        const prevBtn = document.getElementById('prev-mod');
-        const nextBtn = document.getElementById('next-mod');
-        
-        let currentIndex = 0;
-        let slidesPerView = 1;
-        
-        // Update slides per view based on screen width
-        function updateSlidesPerView() {
-            if (window.innerWidth >= 1200) {
-                slidesPerView = 3;
-            } else if (window.innerWidth >= 768) {
-                slidesPerView = 2;
-            } else {
-                slidesPerView = 1;
-            }
-        }
-        
-        updateSlidesPerView();
-        window.addEventListener('resize', updateSlidesPerView);
-        
-        // Update the slider position
-        function updateSlider() {
-            const slideWidth = 100 / slidesPerView;
-            slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-            
-            // Enable/disable navigation buttons
-            prevBtn.disabled = currentIndex === 0;
-            const slides = document.querySelectorAll('.mods-slide');
-            nextBtn.disabled = currentIndex >= slides.length - slidesPerView;
-            prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
-            nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
-        }
-        
-        // Event listeners
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
-        });
-        
-        nextBtn.addEventListener('click', () => {
-            const slides = document.querySelectorAll('.mods-slide');
-            const maxIndex = slides.length - slidesPerView;
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateSlider();
-            }
-        });
-        
-        // Initialize
-        updateSlider();
-    });
-</script>
 </body>
 </html>
