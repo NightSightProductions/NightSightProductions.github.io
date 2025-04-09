@@ -806,6 +806,104 @@
                 font-size: 1.5rem;
             }
         }
+
+        /* Add these slider styles to your existing CSS */
+        .mods-slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+        }
+        
+        .mods-slider {
+            display: flex;
+            transition: transform 0.4s ease;
+            gap: 1rem;
+        }
+        
+        .mods-slide {
+            flex: 0 0 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .mods-slide {
+                flex: 0 0 calc(50% - 0.5rem);
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .mods-slide {
+                flex: 0 0 calc(33.333% - 0.67rem);
+            }
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .slider-nav:hover {
+            background: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev-btn {
+            left: 10px;
+        }
+        
+        .next-btn {
+            right: 10px;
+        }
+        
+        .mod-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            margin: 0;
+        }
+        
+        .mod-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.15);
+        }
+        
+        .mod-details {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mod-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .mod-details p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
     </style>
 </head>
 
@@ -880,37 +978,76 @@
         </section>
         
         <section class="mods-list" id="mods-section">
-            <div class="mods-header">
-                <h2 class="section-header">Our Mods</h2>
-            </div>
-            
-            <div class="mods-grid">
+    <div class="mods-header">
+        <h2 class="section-header">Our Mods</h2>
+    </div>
+    
+    <div class="mods-slider-container">
+        <button class="slider-nav prev-btn" id="prev-mod"><i class="mdi mdi-chevron-left"></i></button>
+        <div class="mods-slider">
+            <div class="mods-slide">
                 <div class="mod-card">
-                    <!-- Image removed -->
                     <div class="mod-details">
                         <h3 class="mod-title">Portal RTX AMD Mod</h3>
                         <p>Enhanced performance optimization for AMD graphics cards, making NVIDIA's Portal RTX more accessible to AMD users.</p>
-                        <a href="#" class="btn" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Download</a>
-                    </div>
-                </div>
-                <div class="mod-card">
-                    <!-- Image removed -->
-                    <div class="mod-details">
-                        <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
-                        <p>Specially optimized version of Portal RTX for the Steam Deck hardware, with performance tweaks for portable play.</p>
-                        <a href="#" class="btn" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Download</a>
-                    </div>
-                </div>
-                <div class="mod-card">
-                    <!-- Image removed -->
-                    <div class="mod-details">
-                        <h3 class="mod-title">Half-Life Alyx Apple Silicon Mod</h3>
-                        <p>A performance optimized version of Half-Life Alyx for Apple Silicon Macs, enabling smooth gameplay on M1/M2/M3 hardware.</p>
-                        <a href="#" class="btn" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Download</a>
+                        <a href="https://github.com/NightSightProductions/Portal-RTX-AMD-mod" class="btn" target="_blank">Download</a>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="mods-slide">
+                <div class="mod-card">
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal RTX Steam Deck Mod</h3>
+                        <p>Specially optimized version of Portal RTX for the Steam Deck hardware, with performance tweaks for portable play.</p>
+                        <a href="https://github.com/NightSightProductions/Portal-RTX-Steam-Deck-mod" class="btn" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mods-slide">
+                <div class="mod-card">
+                    <div class="mod-details">
+                        <h3 class="mod-title">Half-Life Alyx Apple Silicon Mod</h3>
+                        <p>A performance optimized version of Half-Life Alyx for Apple Silicon Macs, enabling smooth gameplay on M1/M2/M3 hardware.</p>
+                        <a href="https://github.com/NightSightProductions/Half-Life-Alyx-Apple-Silicon-Mod" class="btn" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mods-slide">
+                <div class="mod-card">
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal RTX Intel Mod</h3>
+                        <p>Optimized version of Portal RTX for Intel Arc graphics cards, with specialized tweaks for Intel hardware to improve ray tracing performance.</p>
+                        <a href="https://github.com/NightSightProductions/Portal-RTX-Intel-mod" class="btn" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mods-slide">
+                <div class="mod-card">
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal Prelude RTX AMD Mod</h3>
+                        <p>Performance enhanced version of Portal Prelude RTX for AMD graphics cards, bringing ray tracing to this popular Portal mod.</p>
+                        <a href="https://github.com/NightSightProductions/Portal-Prelude-RTX-AMD-mod" class="btn" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mods-slide">
+                <div class="mod-card">
+                    <div class="mod-details">
+                        <h3 class="mod-title">Portal Prelude RTX Steam Deck Mod</h3>
+                        <p>Optimized version of Portal Prelude RTX for the Steam Deck, allowing portable play of this ray-traced Portal expansion.</p>
+                        <a href="https://github.com/NightSightProductions/Portal-Prelude-RTX-Steam-Deck-mod" class="btn" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-nav next-btn" id="next-mod"><i class="mdi mdi-chevron-right"></i></button>
+    </div>
+</section>
         
         <h2 class="section-header">Latest News</h2>
         <section class="news-section">
@@ -990,5 +1127,62 @@
             });
         });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector('.mods-slider');
+        const prevBtn = document.getElementById('prev-mod');
+        const nextBtn = document.getElementById('next-mod');
+        
+        let currentIndex = 0;
+        let slidesPerView = 1;
+        
+        // Update slides per view based on screen width
+        function updateSlidesPerView() {
+            if (window.innerWidth >= 1200) {
+                slidesPerView = 3;
+            } else if (window.innerWidth >= 768) {
+                slidesPerView = 2;
+            } else {
+                slidesPerView = 1;
+            }
+        }
+        
+        updateSlidesPerView();
+        window.addEventListener('resize', updateSlidesPerView);
+        
+        // Update the slider position
+        function updateSlider() {
+            const slideWidth = 100 / slidesPerView;
+            slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            
+            // Enable/disable navigation buttons
+            prevBtn.disabled = currentIndex === 0;
+            const slides = document.querySelectorAll('.mods-slide');
+            nextBtn.disabled = currentIndex >= slides.length - slidesPerView;
+            prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
+            nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            const slides = document.querySelectorAll('.mods-slide');
+            const maxIndex = slides.length - slidesPerView;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+        
+        // Initialize
+        updateSlider();
+    });
+</script>
 </body>
 </html>
