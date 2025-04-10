@@ -166,9 +166,15 @@
             margin-bottom: 1.5rem;
         }
         
-        /* Leadership Team */
+        /* Leadership Team - updated for side-by-side display */
         .leadership {
             margin-bottom: 4rem;
+        }
+        
+        .leadership-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
         }
         
         .leadership-card {
@@ -178,19 +184,17 @@
             border-radius: 5px;
             overflow: hidden;
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 3rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            height: 100%;
         }
         
         .leadership-profile {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            height: 100%;
         }
         
         .leadership-photo {
-            flex: 0 0 350px;
+            height: 280px;
         }
         
         .leadership-photo img {
@@ -201,25 +205,28 @@
         
         .leadership-info {
             flex: 1;
-            padding: 2rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
         }
         
         .leadership-name {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0.3rem;
             color: var(--accent-color);
         }
         
         .leadership-role {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #777;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-style: italic;
         }
         
         .leadership-bio {
-            font-size: 1.05rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
         }
         
         .leadership-social {
@@ -237,6 +244,21 @@
         .leadership-social a:hover {
             color: var(--accent-color);
             transform: translateY(-3px);
+        }
+        
+        /* Media query adjustments */
+        @media (max-width: 992px) {
+            .leadership-cards-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .leadership-cards-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
         }
         
         /* Team Grid */
@@ -429,15 +451,6 @@
                 gap: 1rem 1.5rem;
             }
             
-            .leadership-profile {
-                flex-direction: column;
-            }
-            
-            .leadership-photo {
-                flex: 0 0 auto;
-                height: 300px;
-            }
-            
             .team-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 1.5rem;
@@ -514,64 +527,63 @@
             
             <div class="leadership">
                 <h2 class="section-header">Leadership</h2>
-                <div class="leadership-card">
-                    <div class="leadership-profile">
-                        <div class="leadership-photo">
-                            <img src="images/King Vulpes.png" alt="Lorenzo Acevedo (King Vulpes)" />
-                        </div>
-                        <div class="leadership-info">
-                            <h3 class="leadership-name">Lorenzo Acevedo (King Vulpes)</h3>
-                            <div class="leadership-role">CEO & Founder</div>
-                            <div class="leadership-bio">
-                                <p>Lorenzo Acevedo, known as King Vulpes, is the visionary leader behind NightSightProductions, with a passion for pushing the boundaries of gaming technology. Coming from a background in game development and community leadership, he established NightSightProductions to create a collaborative platform where talented modders could transform their creative visions into reality.</p>
-                                <p>Under his guidance, our team is working on groundbreaking projects like Portal 2 with RTX and supporting the broader RTX modding community through publishing and technical support.</p>
+                <div class="leadership-cards-container">
+                    <div class="leadership-card">
+                        <div class="leadership-profile">
+                            <div class="leadership-photo">
+                                <img src="images/King Vulpes.png" alt="Lorenzo Acevedo (King Vulpes)" />
                             </div>
-                            <div class="leadership-social">
-                                <a href="#"><i class="mdi mdi-twitter"></i></a>
-                                <a href="#"><i class="mdi mdi-linkedin"></i></a>
-                                <a href="#"><i class="mdi mdi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="leadership-card">
-                    <div class="leadership-profile">
-                        <div class="leadership-photo">
-                            <img src="images/Miner.png" alt="Chris Medina (Miner 737)" />
-                        </div>
-                        <div class="leadership-info">
-                            <h3 class="leadership-name">Chris Medina (Miner 737)</h3>
-                            <div class="leadership-role">Co-Founder</div>
-                            <div class="leadership-bio">
-                                <p>Chris Medina, known in the community as Miner 737, is a co-founder of NightSightProductions who helped establish the company's foundation. With his support and vision, NightSightProductions has grown from a small idea into an organization dedicated to enhancing gaming experiences.</p>
-                                <p>As a co-founder, Chris has been instrumental in the early development of the company's mission and values, helping to shape its future direction.</p>
-                            </div>
-                            <div class="leadership-social">
-                                <a href="#"><i class="mdi mdi-twitter"></i></a>
-                                <a href="#"><i class="mdi mdi-linkedin"></i></a>
-                                <a href="#"><i class="mdi mdi-github"></i></a>
+                            <div class="leadership-info">
+                                <h3 class="leadership-name">Lorenzo Acevedo (King Vulpes)</h3>
+                                <div class="leadership-role">CEO & Founder</div>
+                                <div class="leadership-bio">
+                                    <p>Lorenzo Acevedo, known as King Vulpes, is the visionary leader behind NightSightProductions, with a passion for pushing the boundaries of gaming technology. Coming from a background in game development and community leadership, he established NightSightProductions to create a collaborative platform where talented modders could transform their creative visions into reality.</p>
+                                </div>
+                                <div class="leadership-social">
+                                    <a href="#"><i class="mdi mdi-twitter"></i></a>
+                                    <a href="#"><i class="mdi mdi-linkedin"></i></a>
+                                    <a href="#"><i class="mdi mdi-github"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="leadership-card">
-                    <div class="leadership-profile">
-                        <div class="leadership-photo">
-                            <img src="images/Wispoo.png" alt="Aden Medina (Wispoo)" />
-                        </div>
-                        <div class="leadership-info">
-                            <h3 class="leadership-name">Aden Medina (Wispoo)</h3>
-                            <div class="leadership-role">Co-Founder</div>
-                            <div class="leadership-bio">
-                                <p>Aden Medina, better known as Wispoo, is a co-founder of NightSightProductions who contributed to establishing the company in its early days. His belief in the potential of enhancing gaming experiences helped fuel the initial momentum of the organization.</p>
-                                <p>As one of the founding members, Aden played a role in the formation of NightSightProductions and its commitment to making entertaining experiences accessible to more players.</p>
+                    
+                    <div class="leadership-card">
+                        <div class="leadership-profile">
+                            <div class="leadership-photo">
+                                <img src="images/Miner.jpg" alt="Chris Medina (Miner 737)" />
                             </div>
-                            <div class="leadership-social">
-                                <a href="#"><i class="mdi mdi-twitter"></i></a>
-                                <a href="#"><i class="mdi mdi-linkedin"></i></a>
-                                <a href="#"><i class="mdi mdi-github"></i></a>
+                            <div class="leadership-info">
+                                <h3 class="leadership-name">Chris Medina (Miner 737)</h3>
+                                <div class="leadership-role">Co-Founder & Co-Owner</div>
+                                <div class="leadership-bio">
+                                    <p>Chris Medina, known in the community as Miner 737, is a co-founder of NightSightProductions who helped establish the company's foundation. With his support and vision, NightSightProductions has grown from a small idea into an organization dedicated to enhancing gaming experiences.</p>
+                                </div>
+                                <div class="leadership-social">
+                                    <a href="#"><i class="mdi mdi-twitter"></i></a>
+                                    <a href="#"><i class="mdi mdi-linkedin"></i></a>
+                                    <a href="#"><i class="mdi mdi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="leadership-card">
+                        <div class="leadership-profile">
+                            <div class="leadership-photo">
+                                <img src="images/Wispoo.png" alt="Aden Medina (Wispoo)" />
+                            </div>
+                            <div class="leadership-info">
+                                <h3 class="leadership-name">Aden Medina (Wispoo)</h3>
+                                <div class="leadership-role">Co-Founder</div>
+                                <div class="leadership-bio">
+                                    <p>Aden Medina, better known as Wispoo, is a co-founder of NightSightProductions who contributed to establishing the company in its early days. His belief in the potential of enhancing gaming experiences helped fuel the initial momentum of the organization.</p>
+                                </div>
+                                <div class="leadership-social">
+                                    <a href="#"><i class="mdi mdi-twitter"></i></a>
+                                    <a href="#"><i class="mdi mdi-linkedin"></i></a>
+                                    <a href="#"><i class="mdi mdi-github"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
