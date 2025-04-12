@@ -337,7 +337,7 @@
             margin-bottom: 20px;
         }
 
-        /* Completely rebuilt comparison slider styles */
+        /* Enhanced comparison slider styles for 4K images */
         .image-compare-container {
             position: relative;
             max-width: 1000px;
@@ -347,22 +347,28 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
         }
         
+        .comparison-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        
         .image-compare-before,
         .image-compare-after {
             position: absolute;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
         
         .image-compare-before {
-            left: 0;
             z-index: 1;
         }
         
         .image-compare-after {
-            left: 0;
             z-index: 2;
             width: 50%; /* Initial position */
             border-right: 3px solid white;
@@ -370,11 +376,14 @@
         
         .image-compare-before img,
         .image-compare-after img {
-            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
-            object-position: left;
+            object-position: left center;
+            max-width: none;
         }
         
         .image-compare-slider {
@@ -440,11 +449,12 @@
             font-weight: bold;
         }
         
-        /* Set height based on width to maintain aspect ratio */
-        .image-compare-container::before {
-            content: "";
-            display: block;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        /* Handle high-DPI displays better */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .image-compare-before img,
+            .image-compare-after img {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
@@ -540,20 +550,26 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <!-- Completely rebuilt slider -->
-                    <div class="image-compare-container">
-                        <div class="image-compare-before">
-                            <img src="images/RTX-wall-off.png" alt="Original" />
-                        </div>
-                        <div class="image-compare-after">
-                            <img src="images/RTX-wall-on.png" alt="RTX On" />
-                        </div>
-                        <div class="image-compare-slider">
-                            <div class="slider-button"></div>
-                        </div>
-                        <div class="image-labels">
-                            <span class="label-before">Original</span>
-                            <span class="label-after">RTX On</span>
+                    <!-- Improved slider for 4K images -->
+                    <div id="icat-comparison-container" class="image-compare-container">
+                        <div class="comparison-wrapper">
+                            <!-- Original image (OFF) -->
+                            <div class="image-compare-before">
+                                <img src="images/RTX-wall-off.png" alt="Original" />
+                            </div>
+                            <!-- RTX image (ON) -->
+                            <div class="image-compare-after">
+                                <img src="images/RTX-wall-on.png" alt="RTX On" />
+                            </div>
+                            <!-- Slider handle -->
+                            <div class="image-compare-slider">
+                                <div class="slider-button"></div>
+                            </div>
+                            <!-- Labels -->
+                            <div class="image-labels">
+                                <span class="label-before">Original</span>
+                                <span class="label-after">RTX On</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -629,7 +645,8 @@
             }
             
             // Event for when user clicks on slider
-            slider.addEventListener('mousedown', function() {
+            slider.addEventListener('mousedown', function(e) {
+                e.preventDefault();
                 isActive = true;
             });
             
@@ -660,6 +677,7 @@
             
             // Touch support for mobile devices
             slider.addEventListener('touchstart', function(e) {
+                e.preventDefault();
                 isActive = true;
             });
             
@@ -682,31 +700,39 @@
             
             // Preload images to ensure they're available before slider is used
             function preloadImages() {
-                const beforeSrc = document.querySelector('.image-compare-before img').src;
-                const afterSrc = document.querySelector('.image-compare-after img').src;
+                if (!beforeImage || !afterImage) return;
+                
+                const beforeSrc = beforeImage.querySelector('img')?.src;
+                const afterSrc = afterImage.querySelector('img')?.src;
+                
+                if (!beforeSrc || !afterSrc) return;
                 
                 const beforeImg = new Image();
                 const afterImg = new Image();
                 
-                beforeImg.src = beforeSrc;
-                afterImg.src = afterSrc;
+                beforeImg.onload = function() {
+                    console.log('Before image loaded');
+                };
                 
-                console.log('Preloading images:', beforeSrc, afterSrc);
-                
-                // Once images are loaded, ensure the slider is positioned correctly
-                Promise.all([
-                    new Promise(resolve => { beforeImg.onload = resolve; }),
-                    new Promise(resolve => { afterImg.onload = resolve; })
-                ]).then(() => {
-                    console.log('Images loaded successfully');
-                    // Reset to default position
+                afterImg.onload = function() {
+                    console.log('After image loaded');
+                    // Reset slider position after images are loaded
                     afterImage.style.width = '50%';
                     slider.style.left = '50%';
-                });
+                };
+                
+                beforeImg.src = beforeSrc;
+                afterImg.src = afterSrc;
             }
             
             // Call preload function
             preloadImages();
+            
+            // Force correct positioning
+            setTimeout(function() {
+                afterImage.style.width = '50%';
+                slider.style.left = '50%';
+            }, 500);
         });
     </script>
 </body>
