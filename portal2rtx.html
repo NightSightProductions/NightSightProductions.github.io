@@ -337,7 +337,7 @@
             margin-bottom: 20px;
         }
 
-        /* NVIDIA-style Comparison Slider Styles */
+        /* Fixed Comparison Slider Styles */
         .comparison-wrapper {
             position: relative;
             max-width: 1000px;
@@ -353,21 +353,28 @@
         }
         
         #gpu-analyzer-comparison-images div {
-            position: absolute;
+            position: relative; /* Changed from absolute to relative */
+            width: 100%;
+            display: block; /* Added to ensure proper display */
+        }
+        
+        #gpu-analyzer-comparison-images div:first-child {
+            z-index: 1;
+        }
+        
+        #gpu-analyzer-comparison-images div:nth-child(2) {
+            position: absolute; /* This one stays absolute */
             top: 0;
             left: 0;
-            width: 100%;
+            overflow: hidden;
+            width: 50%;
+            z-index: 2;
         }
         
         #gpu-analyzer-comparison-images img {
             display: block;
             width: 100%;
             height: auto;
-        }
-        
-        #gpu-analyzer-comparison-images div:nth-child(2) {
-            overflow: hidden;
-            width: 50%;
         }
         
         .ba-control {
@@ -528,16 +535,18 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <!-- NVIDIA-style slider implementation -->
+                    <!-- Fixed slider implementation with direct image paths -->
                     <input type="hidden" id="promptMsg" value="Drag Slider To Compare"/>
                     <input type="hidden" id="leftMsg" value="Original"/>
                     <input type="hidden" id="rightMsg" value="RTX On"/>
                     
-                    <div id="gpu-analyzer-comparison-images" class="comparison-wrapper">
-                        <!-- Original image -->
-                        <div><img alt="Original" src="images/RTX-wall-off.png" width="1000" /></div>
-                        <!-- RTX On image -->
-                        <div><img alt="RTX On" src="images/RTX-wall-on.png" width="1000" /></div>
+                    <div class="comparison-wrapper">
+                        <div id="gpu-analyzer-comparison-images">
+                            <!-- RTX Off image (Original) -->
+                            <div><img alt="Original" src="images/RTX-wall-off.png" width="1000" /></div>
+                            <!-- RTX On image -->
+                            <div><img alt="RTX On" src="images/RTX-wall-on.png" width="1000" /></div>
+                        </div>
                     </div>
                     
                     <div class="comparison-description">
@@ -665,7 +674,27 @@
     
     // Initialize when document is ready
     $(document).ready(function() {
+        // Verify that images are loaded and visible
+        $('#gpu-analyzer-comparison-images img').each(function() {
+            var img = new Image();
+            img.onload = function() {
+                console.log('Image loaded successfully: ' + this.src);
+            };
+            img.onerror = function() {
+                console.error('Failed to load image: ' + this.src);
+            };
+            img.src = $(this).attr('src');
+        });
+        
+        // Initialize the slider
         $('#gpu-analyzer-comparison-images').beforeAfter();
+        
+        // Force refresh the slider positioning
+        setTimeout(function() {
+            var containerWidth = $('#gpu-analyzer-comparison-images').width();
+            $('#gpu-analyzer-comparison-images div:nth-child(2)').width('50%');
+            $('.ba-control').css('left', '50%');
+        }, 500);
     });
     </script>
 </body>
