@@ -337,7 +337,7 @@
             margin-bottom: 20px;
         }
 
-        /* Updated Comparison Slider Styles */
+        /* Fixed Comparison Slider Styles */
         .comparison-container {
             position: relative;
             width: 100%;
@@ -356,7 +356,7 @@
         .comparison-after {
             position: absolute;
             top: 0;
-            left: 0;
+            right: 0; /* Changed from left to right */
             height: 100%;
             width: 50%;
             overflow: hidden;
@@ -414,11 +414,11 @@
         }
         
         .slider-labels span:first-child {
-            color: var(--text-color);
+            color: var(--primary-color);
         }
         
         .slider-labels span:last-child {
-            color: var(--secondary-color);
+            color: var(--text-color);
         }
     </style>
 </head>
@@ -514,17 +514,17 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <!-- New slider implementation -->
+                    <!-- Corrected slider implementation -->
                     <div class="comparison-container">
-                        <img src="images/RTX-wall-off.png" alt="Original" width="100%">
+                        <img src="images/RTX-wall-on.png" alt="RTX On" width="100%">
                         <div class="comparison-after">
-                            <img src="images/RTX-wall-on.png" alt="RTX On" width="100%">
+                            <img src="images/RTX-wall-off.png" alt="Original" width="100%">
                         </div>
                         <div class="comparison-handle"></div>
                     </div>
                     <div class="slider-labels">
-                        <span>Original</span>
                         <span>RTX On</span>
+                        <span>Original</span>
                     </div>
                     
                     <div class="comparison-description">
@@ -577,7 +577,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const slider = document.querySelector('.comparison-container');
-            const before = document.querySelector('.comparison-after');
+            const after = document.querySelector('.comparison-after');
             const handle = document.querySelector('.comparison-handle');
             
             let isResizing = false;
@@ -590,7 +590,8 @@
             slider.addEventListener('click', function(e) {
                 const sliderRect = slider.getBoundingClientRect();
                 const percentage = ((e.clientX - sliderRect.left) / sliderRect.width) * 100;
-                before.style.width = percentage + '%';
+                // Calculate the width from the right side
+                after.style.width = (100 - percentage) + '%';
                 handle.style.left = percentage + '%';
             });
             
@@ -603,7 +604,8 @@
                 // Limit the percentage between 5% and 95%
                 percentage = Math.max(5, Math.min(percentage, 95));
                 
-                before.style.width = percentage + '%';
+                // Calculate the width from the right side
+                after.style.width = (100 - percentage) + '%';
                 handle.style.left = percentage + '%';
             });
             
@@ -627,7 +629,8 @@
                 // Limit the percentage between 5% and 95%
                 percentage = Math.max(5, Math.min(percentage, 95));
                 
-                before.style.width = percentage + '%';
+                // Calculate the width from the right side
+                after.style.width = (100 - percentage) + '%';
                 handle.style.left = percentage + '%';
             });
             
