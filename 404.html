@@ -64,15 +64,29 @@
             background-color: var(--accent-color);
         }
         
-        .logo {
+        .logo-container {
             margin-bottom: 2rem;
-            max-width: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: #000; /* Black background for logo */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        
+        .logo {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div class="error-container">
-        <img src="images/c-logo2.png" alt="NightSightProductions Logo" class="logo">
+        <div class="logo-container">
+            <img src="images/c-logo2.png" alt="NightSightProductions Logo" class="logo">
+        </div>
         <h1>404 - Page Not Found</h1>
         <p>Oops! The page you're looking for doesn't exist or has been moved.</p>
         <p>Let's get you back to where you need to be.</p>

@@ -336,6 +336,102 @@
             padding: 20px 40px; /* Added padding to fix spacing */
             margin-bottom: 20px;
         }
+
+        /* Comparison Slider Styles */
+        .comparison-slider-wrapper {
+            max-width: 1000px;
+            margin: 30px auto;
+            position: relative;
+        }
+        
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border: 2px solid #333;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+        
+        .img-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .img-divider {
+            width: 50%;
+            overflow: hidden;
+        }
+        
+        .img-slider {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: 4px;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .handle-line {
+            height: 100%;
+            width: 2px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .handle-circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .handle-circle.blue {
+            background-color: var(--primary-color);
+            top: calc(50% - 30px);
+        }
+        
+        .handle-circle.orange {
+            background-color: var(--secondary-color);
+            top: calc(50% + 5px);
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        
+        .label-before {
+            color: var(--text-color);
+        }
+        
+        .label-after {
+            color: var(--secondary-color);
+        }
+        
+        .comparison-description {
+            margin-top: 20px;
+            padding: 0 15px;
+        }
     </style>
 </head>
 <body>
@@ -427,22 +523,31 @@
                 </div>
 
                 <div id="gallery" style="padding: 20px;">
-                    <h2>GALLERY</h2>
-                    <p>See the difference ray tracing makes to Portal 2's iconic environments:</p>
+                    <h2>BEFORE & AFTER</h2>
+                    <p>See a comparison of one of our redone textures:</p>
                     
-                    <div class="gallery">
-                        <div class="gallery-item">
-                            <img src="https://via.placeholder.com/400x300/333333/666666?text=Coming+Soon" alt="Test Chamber - Coming Soon">
+                    <div class="comparison-slider-wrapper">
+                        <div class="comparison-slider">
+                            <div class="img-wrapper">
+                                <img src="images/RTX wall on.png" alt="RTX On" class="img-slider img-after">
+                            </div>
+                            <div class="img-wrapper img-divider">
+                                <img src="images/RTX wall off.png" alt="RTX Off" class="img-slider img-before">
+                            </div>
+                            <div class="slider-handle">
+                                <div class="handle-line"></div>
+                                <div class="handle-circle blue"></div>
+                                <div class="handle-circle orange"></div>
+                            </div>
                         </div>
-                        <div class="gallery-item">
-                            <img src="https://via.placeholder.com/400x300/333333/666666?text=Coming+Soon" alt="Portal Effects - Coming Soon">
+                        <div class="slider-labels">
+                            <span class="label-before">Original</span>
+                            <span class="label-after">RTX On</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="https://via.placeholder.com/400x300/333333/666666?text=Coming+Soon" alt="Old Aperture - Coming Soon">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://via.placeholder.com/400x300/333333/666666?text=Coming+Soon" alt="Reflections - Coming Soon">
-                        </div>
+                    </div>
+                    
+                    <div class="comparison-description">
+                        <p>Drag the slider to compare the original Portal 2 textures with our physically-based materials and ray traced lighting. Notice the realistic reflections, improved shadows, and enhanced surface details.</p>
                     </div>
                 </div>
                 
@@ -488,5 +593,57 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider-handle');
+            const beforeImage = document.querySelector('.img-divider');
+            
+            let isDragging = false;
+            
+            function getPosition(event) {
+                return {
+                    x: event.type.includes('touch') ? event.touches[0].clientX : event.clientX,
+                };
+            }
+            
+            function moveSlider(event) {
+                if (!isDragging) return;
+                
+                const sliderRect = document.querySelector('.comparison-slider').getBoundingClientRect();
+                const position = getPosition(event);
+                
+                let x = position.x - sliderRect.left;
+                let percentage = (x / sliderRect.width) * 100;
+                
+                // Limit the percentage between 5% and 95%
+                percentage = Math.max(5, Math.min(percentage, 95));
+                
+                slider.style.left = `${percentage}%`;
+                beforeImage.style.width = `${percentage}%`;
+            }
+            
+            function startDragging(event) {
+                isDragging = true;
+                moveSlider(event); // Update position immediately on click
+            }
+            
+            function stopDragging() {
+                isDragging = false;
+            }
+            
+            // Mouse events
+            slider.addEventListener('mousedown', startDragging);
+            document.addEventListener('mousemove', moveSlider);
+            document.addEventListener('mouseup', stopDragging);
+            
+            // Touch events for mobile
+            slider.addEventListener('touchstart', startDragging);
+            document.addEventListener('touchmove', moveSlider);
+            document.addEventListener('touchend', stopDragging);
+            
+            // Allow clicking anywhere on the slider to move the divider
+            document.querySelector('.comparison-slider').addEventListener('click', moveSlider);
+        });
+    </script>
 </body>
 </html>
