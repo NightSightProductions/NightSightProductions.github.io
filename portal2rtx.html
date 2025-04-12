@@ -337,7 +337,7 @@
             margin-bottom: 20px;
         }
 
-        /* Improved RTX Comparison Slider Styles */
+        /* NVIDIA-style Comparison Slider Styles */
         .comparison-wrapper {
             position: relative;
             max-width: 1000px;
@@ -346,91 +346,92 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
         }
         
-        #rtx-comparison-slider {
+        #gpu-analyzer-comparison-images {
             position: relative;
-            width: 100%;
             overflow: hidden;
-        }
-        
-        #rtx-comparison-slider div {
             width: 100%;
         }
         
-        #rtx-comparison-slider img {
+        #gpu-analyzer-comparison-images div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        #gpu-analyzer-comparison-images img {
             display: block;
             width: 100%;
+            height: auto;
+        }
+        
+        #gpu-analyzer-comparison-images div:nth-child(2) {
+            overflow: hidden;
+            width: 50%;
         }
         
         .ba-control {
             position: absolute;
-            top: 0;
-            width: 4px;
             height: 100%;
+            width: 5px;
+            top: 0;
+            left: 50%;
+            margin-left: -2px;
             background-color: white;
             cursor: ew-resize;
-            z-index: 10;
+            z-index: 100;
         }
         
-        .ba-control:before {
+        .ba-control::before,
+        .ba-control::after {
             content: "";
             position: absolute;
-            top: calc(50% - 25px);
-            left: 0;
-            transform: translateX(-50%);
             width: 25px;
             height: 25px;
             border-radius: 50%;
-            background-color: var(--primary-color);
-            border: 2px solid white;
-            z-index: 11;
-        }
-        
-        .ba-control:after {
-            content: "";
-            position: absolute;
-            top: calc(50% + 25px);
-            left: 0;
+            left: 50%;
             transform: translateX(-50%);
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: var(--secondary-color);
             border: 2px solid white;
-            z-index: 11;
+            z-index: 101;
         }
         
-        .ba-left-label, .ba-right-label {
+        .ba-control::before {
+            top: calc(50% - 30px);
+            background-color: var(--primary-color); /* Portal blue */
+        }
+        
+        .ba-control::after {
+            top: calc(50% + 5px);
+            background-color: var(--secondary-color); /* Portal orange */
+        }
+        
+        .ba-left-label, 
+        .ba-right-label,
+        .ba-prompt {
             position: absolute;
-            bottom: 10px;
-            padding: 5px 10px;
-            background-color: rgba(0, 0, 0, 0.7);
             color: white;
+            padding: 5px 8px;
+            background-color: rgba(0, 0, 0, 0.7);
             font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
             border-radius: 3px;
+            z-index: 102;
+            font-weight: bold;
         }
         
         .ba-left-label {
+            bottom: 10px;
             left: 10px;
-            color: var(--text-color);
         }
         
         .ba-right-label {
+            bottom: 10px;
             right: 10px;
-            color: var(--primary-color);
         }
         
         .ba-prompt {
-            position: absolute;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 5px 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            font-size: 12px;
-            border-radius: 3px;
             white-space: nowrap;
         }
     </style>
@@ -527,14 +528,16 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <!-- Fixed slider implementation -->
-                    <div class="comparison-wrapper">
-                        <div id="rtx-comparison-slider">
-                            <!-- RTX Off image (correct path and format) -->
-                            <div><img src="images/RTX-wall-off.png" alt="Original" width="100%"></div>
-                            <!-- RTX On image (correct path and format) -->
-                            <div><img src="images/RTX-wall-on.png" alt="RTX On" width="100%"></div>
-                        </div>
+                    <!-- NVIDIA-style slider implementation -->
+                    <input type="hidden" id="promptMsg" value="Drag Slider To Compare"/>
+                    <input type="hidden" id="leftMsg" value="Original"/>
+                    <input type="hidden" id="rightMsg" value="RTX On"/>
+                    
+                    <div id="gpu-analyzer-comparison-images" class="comparison-wrapper">
+                        <!-- Original image -->
+                        <div><img alt="Original" src="images/RTX-wall-off.png" width="1000" /></div>
+                        <!-- RTX On image -->
+                        <div><img alt="RTX On" src="images/RTX-wall-on.png" width="1000" /></div>
                     </div>
                     
                     <div class="comparison-description">
@@ -588,121 +591,81 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <script>
-    // BeforeAfter plugin
-    (function($){
-        $.fn.beforeAfter = function(){
-            var div = $(this);
-            var leftMessage = "Original";
-            var rightMessage = "RTX On";
-            var promptMessage = "Drag Slider To Compare";
-            
-            // Add labels and prompt
-            div.append('<div class="ba-left-label">' + leftMessage + '</div>');
-            div.append('<div class="ba-right-label">' + rightMessage + '</div>');
-            div.append('<div class="ba-prompt">' + promptMessage + '</div>');
-            
-            // Setup the slider
-            var width = div.width();
-            var height = div.height();
-            var imageWidth = div.find('img').width();
-            
-            div.css({
-                overflow: 'hidden',
-                position: 'relative'
-            });
-            
-            // Make the first div (RTX Off) full width
-            div.find('div:first').css({
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                zIndex: 1
-            });
-            
-            // Make the second div (RTX On) half width initially
-            div.find('div:nth-child(2)').css({
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '50%',
-                overflow: 'hidden',
-                zIndex: 2
-            });
-            
-            // Add the control handle
-            div.append('<div class="ba-control" style="left: 50%"></div>');
-            
-            // Make the control draggable
-            div.find('.ba-control').draggable({
-                axis: 'x',
-                containment: div,
-                drag: function(event, ui) {
-                    var position = ui.position.left;
-                    var percentage = (position / width) * 100;
-                    div.find('div:nth-child(2)').css('width', percentage + '%');
-                    $(this).css('left', percentage + '%');
-                }
-            });
-            
-            // Handle click on the container
-            div.on('click', function(e) {
-                var offset = div.offset();
-                var relX = e.pageX - offset.left;
-                var percentage = (relX / width) * 100;
+    // NVIDIA-style BeforeAfter plugin implementation
+    (function($) {
+        $.fn.beforeAfter = function() {
+            return this.each(function() {
+                var $container = $(this);
+                var $leftImage = $container.find('div:first-child');
+                var $rightImage = $container.find('div:last-child');
                 
-                div.find('div:nth-child(2)').animate({
-                    width: percentage + '%'
-                }, 200);
+                // Get messages from hidden inputs
+                var promptMsg = $('#promptMsg').val() || "Drag Slider To Compare";
+                var leftMsg = $('#leftMsg').val() || "Original";
+                var rightMsg = $('#rightMsg').val() || "RTX On";
                 
-                div.find('.ba-control').animate({
-                    left: percentage + '%'
-                }, 200);
+                // Add labels and prompt
+                $container.append('<div class="ba-prompt">' + promptMsg + '</div>');
+                $container.append('<div class="ba-left-label">' + leftMsg + '</div>');
+                $container.append('<div class="ba-right-label">' + rightMsg + '</div>');
+                
+                // Add control slider
+                $container.append('<div class="ba-control"></div>');
+                
+                var $control = $container.find('.ba-control');
+                var containerWidth = $container.width();
+                
+                // Initialize position
+                $rightImage.width('50%');
+                $control.css('left', '50%');
+                
+                // Make slider draggable
+                $control.draggable({
+                    axis: 'x',
+                    containment: $container,
+                    drag: function(event, ui) {
+                        var position = ui.position.left;
+                        var percentage = (position / containerWidth) * 100;
+                        $rightImage.width(percentage + '%');
+                    }
+                });
+                
+                // Click anywhere on image to set position
+                $container.on('click', function(e) {
+                    if (!$(e.target).hasClass('ba-control')) {
+                        var offset = $container.offset();
+                        var relX = e.pageX - offset.left;
+                        var percentage = (relX / containerWidth) * 100;
+                        
+                        $rightImage.stop().animate({
+                            width: percentage + '%'
+                        }, 300);
+                        
+                        $control.stop().animate({
+                            left: percentage + '%'
+                        }, 300);
+                    }
+                });
+                
+                // Hide prompt on interaction
+                $container.on('mousedown touchstart', function() {
+                    $container.find('.ba-prompt').fadeOut(200);
+                });
+                
+                // Recalculate on window resize
+                $(window).resize(function() {
+                    containerWidth = $container.width();
+                    var currentPercentage = ($rightImage.width() / containerWidth) * 100;
+                    $rightImage.width(currentPercentage + '%');
+                    $control.css('left', currentPercentage + '%');
+                });
             });
-            
-            // Hide prompt on first interaction
-            div.on('mousedown touchstart', function() {
-                div.find('.ba-prompt').fadeOut(200);
-            });
-            
-            return div;
         };
     })(jQuery);
     
-    // Additional image verification and error handling
-    jQuery(document).ready(function() {
-        // Verify images are loaded
-        const offImage = new Image();
-        const onImage = new Image();
-        
-        offImage.onload = function() {
-            console.log("RTX-off image loaded successfully");
-        };
-        
-        offImage.onerror = function() {
-            console.error("Failed to load RTX-off image");
-            // Try alternative path
-            $('#rtx-comparison-slider div:first-child img').attr('src', 'images/RTX-wall-off.png');
-        };
-        
-        onImage.onload = function() {
-            console.log("RTX-on image loaded successfully");
-        };
-        
-        onImage.onerror = function() {
-            console.error("Failed to load RTX-on image");
-            // Try alternative path
-            $('#rtx-comparison-slider div:nth-child(2) img').attr('src', 'images/RTX-wall-on.png');
-        };
-        
-        // Set source after configuring handlers
-        offImage.src = 'images/RTX-wall-off.png';
-        onImage.src = 'images/RTX-wall-on.png';
-        
-        // Initialize slider after short delay to ensure images are processed
-        setTimeout(function() {
-            $('#rtx-comparison-slider').beforeAfter();
-        }, 100);
+    // Initialize when document is ready
+    $(document).ready(function() {
+        $('#gpu-analyzer-comparison-images').beforeAfter();
     });
     </script>
 </body>
