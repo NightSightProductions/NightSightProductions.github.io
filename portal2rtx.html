@@ -550,25 +550,25 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <!-- Improved slider for 4K images -->
+                    <!-- Improved slider with corrected image positions -->
                     <div id="icat-comparison-container" class="image-compare-container">
                         <div class="comparison-wrapper">
-                            <!-- Original image (OFF) -->
+                            <!-- RTX image (ON) - This should be the base layer -->
                             <div class="image-compare-before">
-                                <img src="images/RTX-wall-off.png" alt="Original" />
-                            </div>
-                            <!-- RTX image (ON) -->
-                            <div class="image-compare-after">
                                 <img src="images/RTX-wall-on.png" alt="RTX On" />
+                            </div>
+                            <!-- Original image (OFF) - This should be the sliding layer -->
+                            <div class="image-compare-after">
+                                <img src="images/RTX-wall-off.png" alt="Original" />
                             </div>
                             <!-- Slider handle -->
                             <div class="image-compare-slider">
                                 <div class="slider-button"></div>
                             </div>
-                            <!-- Labels -->
+                            <!-- Labels with corrected positioning -->
                             <div class="image-labels">
-                                <span class="label-before">Original</span>
-                                <span class="label-after">RTX On</span>
+                                <span class="label-before">RTX On</span>
+                                <span class="label-after">Original</span>
                             </div>
                         </div>
                     </div>
@@ -620,119 +620,97 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Variables for slider functionality
-            const container = document.querySelector('.image-compare-container');
-            const beforeImage = document.querySelector('.image-compare-before');
-            const afterImage = document.querySelector('.image-compare-after');
-            const slider = document.querySelector('.image-compare-slider');
-            
-            let isActive = false;
-            
-            // Function to update slider position
-            function updateSliderPosition(x) {
-                // Get container dimensions
-                const containerRect = container.getBoundingClientRect();
-                
-                // Calculate position as percentage
-                let position = ((x - containerRect.left) / containerRect.width) * 100;
-                position = Math.max(0, Math.min(position, 100)); // Constrain between 0-100%
-                
-                // Update afterImage and slider positions
-                afterImage.style.width = `${position}%`;
-                slider.style.left = `${position}%`;
-            }
-            
-            // Event for when user clicks on slider
-            slider.addEventListener('mousedown', function(e) {
-                e.preventDefault();
-                isActive = true;
-            });
-            
-            // Event for when user clicks on container
-            container.addEventListener('click', function(e) {
-                if (e.target !== slider && !slider.contains(e.target)) {
-                    updateSliderPosition(e.clientX);
-                }
-            });
-            
-            // Event for when user moves mouse while holding down
-            document.addEventListener('mousemove', function(e) {
-                if (!isActive) return;
-                
-                e.preventDefault();
-                updateSliderPosition(e.clientX);
-            });
-            
-            // Event for when user releases mouse
-            document.addEventListener('mouseup', function() {
-                isActive = false;
-            });
-            
-            // Event for when user leaves page
-            document.addEventListener('mouseleave', function() {
-                isActive = false;
-            });
-            
-            // Touch support for mobile devices
-            slider.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                isActive = true;
-            });
-            
-            container.addEventListener('touchstart', function(e) {
-                if (e.target !== slider && !slider.contains(e.target)) {
-                    updateSliderPosition(e.touches[0].clientX);
-                }
-            });
-            
-            document.addEventListener('touchmove', function(e) {
-                if (!isActive) return;
-                
-                e.preventDefault();
-                updateSliderPosition(e.touches[0].clientX);
-            }, { passive: false });
-            
-            document.addEventListener('touchend', function() {
-                isActive = false;
-            });
-            
-            // Preload images to ensure they're available before slider is used
-            function preloadImages() {
-                if (!beforeImage || !afterImage) return;
-                
-                const beforeSrc = beforeImage.querySelector('img')?.src;
-                const afterSrc = afterImage.querySelector('img')?.src;
-                
-                if (!beforeSrc || !afterSrc) return;
-                
-                const beforeImg = new Image();
-                const afterImg = new Image();
-                
-                beforeImg.onload = function() {
-                    console.log('Before image loaded');
-                };
-                
-                afterImg.onload = function() {
-                    console.log('After image loaded');
-                    // Reset slider position after images are loaded
-                    afterImage.style.width = '50%';
-                    slider.style.left = '50%';
-                };
-                
-                beforeImg.src = beforeSrc;
-                afterImg.src = afterSrc;
-            }
-            
-            // Call preload function
-            preloadImages();
-            
-            // Force correct positioning
+            // Initialize only after jQuery is loaded
             setTimeout(function() {
+                // Variables for slider functionality
+                const container = document.querySelector('.image-compare-container');
+                const beforeImage = document.querySelector('.image-compare-before');
+                const afterImage = document.querySelector('.image-compare-after');
+                const slider = document.querySelector('.image-compare-slider');
+                
+                if (!container || !beforeImage || !afterImage || !slider) {
+                    console.error("Comparison slider elements not found");
+                    return;
+                }
+                
+                console.log("Initializing comparison slider");
+                
+                let isActive = false;
+                
+                // Function to update slider position
+                function updateSliderPosition(x) {
+                    // Get container dimensions
+                    const containerRect = container.getBoundingClientRect();
+                    
+                    // Calculate position as percentage
+                    let position = ((x - containerRect.left) / containerRect.width) * 100;
+                    position = Math.max(0, Math.min(position, 100)); // Constrain between 0-100%
+                    
+                    // Update afterImage and slider positions
+                    afterImage.style.width = `${position}%`;
+                    slider.style.left = `${position}%`;
+                }
+                
+                // Set initial position
                 afterImage.style.width = '50%';
                 slider.style.left = '50%';
-            }, 500);
+                
+                // Event for when user clicks on slider
+                slider.addEventListener('mousedown', function(e) {
+                    e.preventDefault();
+                    isActive = true;
+                });
+                
+                // Event for when user clicks on container
+                container.addEventListener('click', function(e) {
+                    if (e.target !== slider && !slider.contains(e.target)) {
+                        updateSliderPosition(e.clientX);
+                    }
+                });
+                
+                // Event for when user moves mouse while holding down
+                document.addEventListener('mousemove', function(e) {
+                    if (!isActive) return;
+                    
+                    e.preventDefault();
+                    updateSliderPosition(e.clientX);
+                });
+                
+                // Event for when user releases mouse
+                document.addEventListener('mouseup', function() {
+                    isActive = false;
+                });
+                
+                // Touch support for mobile devices
+                slider.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    isActive = true;
+                });
+                
+                container.addEventListener('touchstart', function(e) {
+                    if (e.target !== slider && !slider.contains(e.target)) {
+                        const touch = e.touches[0];
+                        updateSliderPosition(touch.clientX);
+                    }
+                });
+                
+                document.addEventListener('touchmove', function(e) {
+                    if (!isActive) return;
+                    
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    updateSliderPosition(touch.clientX);
+                }, { passive: false });
+                
+                document.addEventListener('touchend', function() {
+                    isActive = false;
+                });
+                
+                console.log("Slider initialization complete");
+            }, 500); // Delay to ensure everything is loaded
         });
     </script>
 </body>
