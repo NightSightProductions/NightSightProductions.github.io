@@ -337,35 +337,33 @@
             margin-bottom: 20px;
         }
 
-        /* Fixed Comparison Slider Styles */
-        .comparison-container {
+        /* Improved RTX Comparison Slider Styles */
+        .comparison-wrapper {
             position: relative;
-            width: 100%;
             max-width: 1000px;
             margin: 30px auto;
-            overflow: hidden;
             border: 2px solid #333;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
         }
         
-        .comparison-container img {
+        #rtx-comparison-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        #rtx-comparison-slider div {
+            width: 100%;
+        }
+        
+        #rtx-comparison-slider img {
             display: block;
             width: 100%;
         }
         
-        .comparison-after {
+        .ba-control {
             position: absolute;
             top: 0;
-            right: 0; /* Changed from left to right */
-            height: 100%;
-            width: 50%;
-            overflow: hidden;
-        }
-        
-        .comparison-handle {
-            position: absolute;
-            top: 0;
-            left: 50%;
             width: 4px;
             height: 100%;
             background-color: white;
@@ -373,20 +371,7 @@
             z-index: 10;
         }
         
-        .comparison-handle::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: white;
-            border: 3px solid white;
-        }
-        
-        .comparison-handle::before {
+        .ba-control:before {
             content: "";
             position: absolute;
             top: calc(50% - 25px);
@@ -397,28 +382,56 @@
             border-radius: 50%;
             background-color: var(--primary-color);
             border: 2px solid white;
+            z-index: 11;
         }
         
-        .comparison-handle::after {
+        .ba-control:after {
+            content: "";
+            position: absolute;
             top: calc(50% + 25px);
+            left: 0;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
             background-color: var(--secondary-color);
+            border: 2px solid white;
+            z-index: 11;
         }
         
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
+        .ba-left-label, .ba-right-label {
+            position: absolute;
+            bottom: 10px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 14px;
+            border-radius: 3px;
         }
         
-        .slider-labels span:first-child {
+        .ba-left-label {
+            left: 10px;
+            color: var(--text-color);
+        }
+        
+        .ba-right-label {
+            right: 10px;
             color: var(--primary-color);
         }
         
-        .slider-labels span:last-child {
-            color: var(--text-color);
+        .ba-prompt {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 12px;
+            border-radius: 3px;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -514,17 +527,14 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <!-- Corrected slider implementation -->
-                    <div class="comparison-container">
-                        <img src="images/RTX-wall-on.png" alt="RTX On" width="100%">
-                        <div class="comparison-after">
-                            <img src="images/RTX-wall-off.png" alt="Original" width="100%">
+                    <!-- Improved slider implementation using the reference structure -->
+                    <div class="comparison-wrapper">
+                        <div id="rtx-comparison-slider">
+                            <!-- RTX Off image -->
+                            <div><img src="images/RTX-wall-off.png" alt="Original" width="100%"></div>
+                            <!-- RTX On image -->
+                            <div><img src="images/RTX-wall-on.png" alt="RTX On" width="100%"></div>
                         </div>
-                        <div class="comparison-handle"></div>
-                    </div>
-                    <div class="slider-labels">
-                        <span>RTX On</span>
-                        <span>Original</span>
                     </div>
                     
                     <div class="comparison-description">
@@ -574,70 +584,95 @@
             </div>
         </div>
     </div>
+    <!-- jQuery and BeforeAfter plugin -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const slider = document.querySelector('.comparison-container');
-            const after = document.querySelector('.comparison-after');
-            const handle = document.querySelector('.comparison-handle');
+    // BeforeAfter plugin
+    (function($){
+        $.fn.beforeAfter = function(){
+            var div = $(this);
+            var leftMessage = "Original";
+            var rightMessage = "RTX On";
+            var promptMessage = "Drag Slider To Compare";
             
-            let isResizing = false;
+            // Add labels and prompt
+            div.append('<div class="ba-left-label">' + leftMessage + '</div>');
+            div.append('<div class="ba-right-label">' + rightMessage + '</div>');
+            div.append('<div class="ba-prompt">' + promptMessage + '</div>');
             
-            handle.addEventListener('mousedown', function(e) {
-                e.preventDefault();
-                isResizing = true;
+            // Setup the slider
+            var width = div.width();
+            var height = div.height();
+            var imageWidth = div.find('img').width();
+            
+            div.css({
+                overflow: 'hidden',
+                position: 'relative'
             });
             
-            slider.addEventListener('click', function(e) {
-                const sliderRect = slider.getBoundingClientRect();
-                const percentage = ((e.clientX - sliderRect.left) / sliderRect.width) * 100;
-                // Calculate the width from the right side
-                after.style.width = (100 - percentage) + '%';
-                handle.style.left = percentage + '%';
+            // Make the first div (RTX Off) full width
+            div.find('div:first').css({
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 1
             });
             
-            document.addEventListener('mousemove', function(e) {
-                if (!isResizing) return;
+            // Make the second div (RTX On) half width initially
+            div.find('div:nth-child(2)').css({
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '50%',
+                overflow: 'hidden',
+                zIndex: 2
+            });
+            
+            // Add the control handle
+            div.append('<div class="ba-control" style="left: 50%"></div>');
+            
+            // Make the control draggable
+            div.find('.ba-control').draggable({
+                axis: 'x',
+                containment: div,
+                drag: function(event, ui) {
+                    var position = ui.position.left;
+                    var percentage = (position / width) * 100;
+                    div.find('div:nth-child(2)').css('width', percentage + '%');
+                    $(this).css('left', percentage + '%');
+                }
+            });
+            
+            // Handle click on the container
+            div.on('click', function(e) {
+                var offset = div.offset();
+                var relX = e.pageX - offset.left;
+                var percentage = (relX / width) * 100;
                 
-                const sliderRect = slider.getBoundingClientRect();
-                let percentage = ((e.clientX - sliderRect.left) / sliderRect.width) * 100;
+                div.find('div:nth-child(2)').animate({
+                    width: percentage + '%'
+                }, 200);
                 
-                // Limit the percentage between 5% and 95%
-                percentage = Math.max(5, Math.min(percentage, 95));
-                
-                // Calculate the width from the right side
-                after.style.width = (100 - percentage) + '%';
-                handle.style.left = percentage + '%';
+                div.find('.ba-control').animate({
+                    left: percentage + '%'
+                }, 200);
             });
             
-            document.addEventListener('mouseup', function() {
-                isResizing = false;
+            // Hide prompt on first interaction
+            div.on('mousedown touchstart', function() {
+                div.find('.ba-prompt').fadeOut(200);
             });
             
-            // Touch events for mobile devices
-            handle.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                isResizing = true;
-            });
-            
-            document.addEventListener('touchmove', function(e) {
-                if (!isResizing) return;
-                
-                const sliderRect = slider.getBoundingClientRect();
-                const touch = e.touches[0];
-                let percentage = ((touch.clientX - sliderRect.left) / sliderRect.width) * 100;
-                
-                // Limit the percentage between 5% and 95%
-                percentage = Math.max(5, Math.min(percentage, 95));
-                
-                // Calculate the width from the right side
-                after.style.width = (100 - percentage) + '%';
-                handle.style.left = percentage + '%';
-            });
-            
-            document.addEventListener('touchend', function() {
-                isResizing = false;
-            });
-        });
+            return div;
+        };
+    })(jQuery);
+    
+    // Initialize the slider when the document is ready
+    jQuery(document).ready(function() {
+        $('#rtx-comparison-slider').beforeAfter();
+    });
     </script>
 </body>
 </html>
