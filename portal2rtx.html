@@ -338,77 +338,44 @@
         }
 
         /* Comparison Slider Styles */
-        .comparison-slider-wrapper {
-            max-width: 1000px;
-            margin: 30px auto;
-            position: relative;
-        }
-        
-        .comparison-slider {
+        .comparison-container {
             position: relative;
             width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
             overflow: hidden;
             border: 2px solid #333;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
         }
         
-        .img-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
+        .comparison-before {
+            position: relative;
             width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
         }
         
-        .img-divider {
-            width: 50%;
-            overflow: hidden;
-        }
-        
-        .img-slider {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .slider-handle {
+        .comparison-after {
             position: absolute;
             top: 0;
             left: 50%;
+            width: 50%;
             height: 100%;
-            width: 4px;
-            transform: translateX(-50%);
-            cursor: ew-resize;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
         }
         
-        .handle-line {
-            height: 100%;
-            width: 2px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-        }
-        
-        .handle-circle {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
+        .comparison-handle {
             position: absolute;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        
-        .handle-circle.blue {
-            background-color: var(--primary-color);
-            top: calc(50% - 30px);
-        }
-        
-        .handle-circle.orange {
-            background-color: var(--secondary-color);
-            top: calc(50% + 5px);
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background-color: white;
+            cursor: ew-resize;
+            z-index: 10;
         }
         
         .slider-labels {
@@ -418,14 +385,6 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 14px;
-        }
-        
-        .label-before {
-            color: var(--text-color);
-        }
-        
-        .label-after {
-            color: var(--secondary-color);
         }
         
         .comparison-description {
@@ -526,23 +485,16 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <div class="comparison-slider-wrapper">
-                        <div class="comparison-slider">
-                            <div class="img-wrapper">
-                                <img src="images/RTX-wall-on.png" alt="RTX On" class="img-slider img-after">
-                            </div>
-                            <div class="img-wrapper img-divider">
-                                <img src="images/RTX-wall-off.png" alt="RTX Off" class="img-slider img-before">
-                            </div>
-                            <div class="slider-handle">
-                                <div class="handle-line"></div>
-                                <div class="handle-circle blue"></div>
-                                <div class="handle-circle orange"></div>
+                    <!-- Simplified comparison slider implementation -->
+                    <div class="comparison-container">
+                        <div class="comparison-before" style="background-image: url('images/RTX-wall-off.png');">
+                            <div class="comparison-after" style="background-image: url('images/RTX-wall-on.png');">
+                                <div class="comparison-handle"></div>
                             </div>
                         </div>
                         <div class="slider-labels">
-                            <span class="label-before">Original</span>
-                            <span class="label-after">RTX On</span>
+                            <span>Original</span>
+                            <span>RTX On</span>
                         </div>
                     </div>
                     
@@ -595,54 +547,61 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const slider = document.querySelector('.slider-handle');
-            const beforeImage = document.querySelector('.img-divider');
+            const slider = document.querySelector('.comparison-container');
+            const before = document.querySelector('.comparison-after');
+            const handle = document.querySelector('.comparison-handle');
             
-            let isDragging = false;
+            let isResizing = false;
             
-            function getPosition(event) {
-                return {
-                    x: event.type.includes('touch') ? event.touches[0].clientX : event.clientX,
-                };
-            }
+            handle.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                isResizing = true;
+            });
             
-            function moveSlider(event) {
-                if (!isDragging) return;
+            slider.addEventListener('click', function(e) {
+                const sliderRect = slider.getBoundingClientRect();
+                const percentage = ((e.clientX - sliderRect.left) / sliderRect.width) * 100;
+                before.style.width = percentage + '%';
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (!isResizing) return;
                 
-                const sliderRect = document.querySelector('.comparison-slider').getBoundingClientRect();
-                const position = getPosition(event);
-                
-                let x = position.x - sliderRect.left;
-                let percentage = (x / sliderRect.width) * 100;
+                const sliderRect = slider.getBoundingClientRect();
+                let percentage = ((e.clientX - sliderRect.left) / sliderRect.width) * 100;
                 
                 // Limit the percentage between 5% and 95%
                 percentage = Math.max(5, Math.min(percentage, 95));
                 
-                slider.style.left = `${percentage}%`;
-                beforeImage.style.width = `${percentage}%`;
-            }
+                before.style.width = percentage + '%';
+            });
             
-            function startDragging(event) {
-                isDragging = true;
-                moveSlider(event); // Update position immediately on click
-            }
+            document.addEventListener('mouseup', function() {
+                isResizing = false;
+            });
             
-            function stopDragging() {
-                isDragging = false;
-            }
+            // Touch events for mobile devices
+            handle.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                isResizing = true;
+            });
             
-            // Mouse events
-            slider.addEventListener('mousedown', startDragging);
-            document.addEventListener('mousemove', moveSlider);
-            document.addEventListener('mouseup', stopDragging);
+            document.addEventListener('touchmove', function(e) {
+                if (!isResizing) return;
+                
+                const sliderRect = slider.getBoundingClientRect();
+                const touch = e.touches[0];
+                let percentage = ((touch.clientX - sliderRect.left) / sliderRect.width) * 100;
+                
+                // Limit the percentage between 5% and 95%
+                percentage = Math.max(5, Math.min(percentage, 95));
+                
+                before.style.width = percentage + '%';
+            });
             
-            // Touch events for mobile
-            slider.addEventListener('touchstart', startDragging);
-            document.addEventListener('touchmove', moveSlider);
-            document.addEventListener('touchend', stopDragging);
-            
-            // Allow clicking anywhere on the slider to move the divider
-            document.querySelector('.comparison-slider').addEventListener('click', moveSlider);
+            document.addEventListener('touchend', function() {
+                isResizing = false;
+            });
         });
     </script>
 </body>
