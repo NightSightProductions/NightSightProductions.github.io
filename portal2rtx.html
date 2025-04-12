@@ -527,18 +527,18 @@
                     <h2>BEFORE & AFTER</h2>
                     <p>See a comparison of one of our redone textures:</p>
                     
-                    <!-- Improved slider implementation using the reference structure -->
+                    <!-- Fixed slider implementation -->
                     <div class="comparison-wrapper">
                         <div id="rtx-comparison-slider">
-                            <!-- RTX Off image -->
+                            <!-- RTX Off image (correct path and format) -->
                             <div><img src="images/RTX-wall-off.png" alt="Original" width="100%"></div>
-                            <!-- RTX On image -->
+                            <!-- RTX On image (correct path and format) -->
                             <div><img src="images/RTX-wall-on.png" alt="RTX On" width="100%"></div>
                         </div>
                     </div>
                     
                     <div class="comparison-description">
-                        <p>Drag the slider to compare the original Portal 2 textures with our physically-based materials and ray traced lighting. Notice the realistic reflections, improved shadows, and enhanced surface details.</p>
+                        <p>Drag the slider to compare the original Portal 2 texture with our physically-based materials. Notice the enhanced surface details and improved material definition that brings new life to Aperture Science's environments.</p>
                     </div>
                 </div>
                 
@@ -669,9 +669,40 @@
         };
     })(jQuery);
     
-    // Initialize the slider when the document is ready
+    // Additional image verification and error handling
     jQuery(document).ready(function() {
-        $('#rtx-comparison-slider').beforeAfter();
+        // Verify images are loaded
+        const offImage = new Image();
+        const onImage = new Image();
+        
+        offImage.onload = function() {
+            console.log("RTX-off image loaded successfully");
+        };
+        
+        offImage.onerror = function() {
+            console.error("Failed to load RTX-off image");
+            // Try alternative path
+            $('#rtx-comparison-slider div:first-child img').attr('src', 'images/RTX-wall-off.png');
+        };
+        
+        onImage.onload = function() {
+            console.log("RTX-on image loaded successfully");
+        };
+        
+        onImage.onerror = function() {
+            console.error("Failed to load RTX-on image");
+            // Try alternative path
+            $('#rtx-comparison-slider div:nth-child(2) img').attr('src', 'images/RTX-wall-on.png');
+        };
+        
+        // Set source after configuring handlers
+        offImage.src = 'images/RTX-wall-off.png';
+        onImage.src = 'images/RTX-wall-on.png';
+        
+        // Initialize slider after short delay to ensure images are processed
+        setTimeout(function() {
+            $('#rtx-comparison-slider').beforeAfter();
+        }, 100);
     });
     </script>
 </body>
