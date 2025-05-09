@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacIn-VR - NightSightProductions</title>
+    <style>
+        :root {
+            --primary-color: #ff78c7; /* MacIn-VR pink */
+            --secondary-color: #7b5aff; /* MacIn-VR purple */
+            --accent-color: #61c1ff; /* Light blue */
+            --text-color: #f8f9fa;
+            --background-color: #0a0014; /* Dark background with purple tint */
+            --card-background: #1a1222; /* Dark purple */
+            --logo-color: #e6e6e6; /* White */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; /* Mac-like font */
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .background {
+            background: linear-gradient(rgba(10, 0, 20, 0.8), rgba(10, 0, 20, 0.9)), url('images/MacIn-VRVertGrid.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 1200px; /* Increased from 960px */
+            margin: 0 auto;
+            background-color: rgba(10, 0, 20, 0.8);
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+        
+        .navigation {
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 120px;
+            position: relative;
+            border-bottom: 2px solid #333;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .p2_logo {
+            margin-right: auto;
+        }
+        
+        .p2_logo img {
+            max-height: 80px;
+        }
+        
+        .top_nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .top_nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            transition: color 0.2s;
+            border-left: 1px solid #333;
+        }
+        
+        .top_nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        .top_nav a.active {
+            color: var(--secondary-color);
+        }
+        
+        .showcase {
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #333;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/MacIn-VRVertGrid.png') no-repeat center center;
+            background-size: contain;
+        }
+        
+        .showcase::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--background-color));
+        }
+        
+        .centerpiece {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 80%;
+        }
+        
+        .main_content {
+            background-color: var(--background-color);
+            padding: 0;
+            position: relative;
+        }
+        
+        .content_container {
+            display: flex;
+            padding: 40px 20px;
+        }
+        
+        .spotlight {
+            flex: 2;
+            padding-right: 20px;
+        }
+        
+        .headlines {
+            flex: 1;
+            background-color: rgba(26, 18, 34, 0.5);
+            padding: 15px;
+            border-left: 1px solid #333;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--secondary-color);
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background-color: rgba(30, 20, 40, 0.5);
+            border: 1px solid #333;
+            padding: 15px;
+        }
+        
+        .feature-card:nth-child(odd) {
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .feature-card:nth-child(even) {
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .feature-title {
+            color: var(--accent-color);
+            font-size: 16px;
+            margin: 0 0 10px 0;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            border: 1px solid #333;
+            height: 200px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+        
+        .btn-purple {
+            background-color: var(--secondary-color);
+        }
+        
+        .mac-divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .mac-divider .line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #333;
+        }
+        
+        .mac-divider .circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+        
+        .mac-divider .pink {
+            background-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .mac-divider .purple {
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 10px var(--secondary-color);
+        }
+        
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer img {
+            height: 30px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        
+        .footer img:hover {
+            opacity: 1;
+        }
+        
+        .footer_copy {
+            width: 100%;
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 960px) {
+            .container {
+                width: 100%;
+            }
+            
+            .content_container {
+                flex-direction: column;
+            }
+            
+            .spotlight {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .headlines {
+                border-left: none;
+                border-top: 1px solid #333;
+                padding-top: 20px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navigation {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                text-align: center;
+            }
+            
+            .p2_logo {
+                margin: 0 0 15px 0;
+            }
+            
+            .top_nav {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .top_nav a {
+                border-left: none;
+                border-bottom: 1px solid #333;
+                padding: 8px;
+            }
+            
+            .showcase {
+                height: 300px;
+            }
+        }
+        
+        .featured-description {
+            padding: 20px 40px; /* Added padding to fix spacing */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="navigation">
+                <div class="p2_logo">
+                    <h1 style="color: var(--primary-color); text-shadow: 0 0 10px var(--primary-color);">MacIn-VR</h1>
+                </div>
+                <div class="top_nav">
+                    <a href="#overview" class="active">Overview</a>
+                    <a href="#features">Features</a>
+                    <a href="#gallery">Media</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="/">Back to NightSight</a>
+                </div>
+            </div>
+            
+            <div class="showcase">
+                <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 3rem; text-shadow: 0 0 20px var(--primary-color); z-index: 10; text-align: center;">MacIn-VR<br><span style="font-size: 1.5rem;">Social VR for Mac</span></h1>
+            </div>
+            
+            <div class="main_content">
+                <div class="content_container">
+                    <div class="spotlight" id="overview">
+                        <h2>PROJECT OVERVIEW</h2>
+                        <p>MacIn-VR is the exclusive Social VR experience designed natively for Mac! No more struggling with emulation or compatibility issues - MacIn-VR is built from the ground up to work seamlessly on macOS.</p>
+                        <p>Browse the Metaverse, use your VRM avatars, and play with friends in immersive 3D worlds - all running natively on your Mac hardware with optimized performance!</p>
+                        
+                        <div class="mac-divider">
+                            <div class="line"></div>
+                            <div class="circle pink"></div>
+                            <div class="circle purple"></div>
+                            <div class="line"></div>
+                        </div>
+                        
+                        <p>Development Status: <strong>Early Access</strong></p>
+                        <a href="https://www.youtube.com/@NightSightProductions" target="_blank" class="btn">Subscribe for Updates</a>
+                        <a href="https://discord.gg/GKacpbpyQb" target="_blank" class="btn btn-purple">Join Our Discord</a>
+                    </div>
+                    
+                    <div class="headlines">
+                        <h3>PROJECT HIGHLIGHTS</h3>
+                        <ul style="list-style: none; margin-bottom: 20px;">
+                            <li style="padding: 8px 0; border-bottom: 1px dotted #333;">
+                                <a href="#features" style="color: var(--primary-color); text-decoration: none;">Native Mac Performance</a>
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px dotted #333;">
+                                <a href="#features" style="color: var(--primary-color); text-decoration: none;">VRM Avatar Support</a>
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px dotted #333;">
+                                <a href="#features" style="color: var(--primary-color); text-decoration: none;">Apple Silicon Optimized</a>
+                            </li>
+                        </ul>
+                        <img src="images/Logo.png" alt="NightSight Productions" style="width: 100%; margin-top: 15px;">
+                    </div>
+                </div>
+                
+                <div id="features" style="padding: 20px;">
+                    <h2>KEY FEATURES</h2>
+                    <p>MacIn-VR offers a full-featured VR social experience exclusively for Mac users:</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3 class="feature-title">Native Mac Performance</h3>
+                            <p>Developed specifically for macOS without using Whisky, CrossOver, or Wine for true native performance.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="feature-title">VRM Avatar Support</h3>
+                            <p>Import and use your custom VRM avatars with full expression and animation support.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="feature-title">Apple Silicon Optimized</h3>
+                            <p>Specially optimized for M1, M2, and M3 chips with Metal API for maximum efficiency.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="feature-title">Immersive 3D Worlds</h3>
+                            <p>Explore beautiful social spaces and custom worlds built for interactive experiences.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-description">
+                    <h2>About This Game</h2>
+                    <p>Welcome to MacIn-VR, the exclusive Social VR experience for Mac!</p>
+                    <p>Browse the Metaverse on your Mac natively! Play in worlds, use your VRM avatars and play with your friends in 3D worlds! No need of Whisky, CrossOver or Wine! MacIn-VR runs solely on the Mac and is meant for the Mac only!</p>
+                    <p>MacIn-VR brings the social VR experience to Mac users without compromises. We've optimized every aspect of the experience for macOS, ensuring that Mac users can finally enjoy VR social platforms without the performance hits and compatibility issues that come with using emulation layers.</p>
+                    <p>Whether you're meeting friends, attending virtual events, or just exploring creative spaces, MacIn-VR provides a seamless gateway to the metaverse specifically designed for your Mac. Join us on our Early Access journey as we continue to expand and enhance the MacIn-VR experience!</p>
+                </div>
+
+                <div id="gallery" style="padding: 20px;">
+                    <h2>MEDIA GALLERY</h2>
+                    <p>Screenshots coming soon as we progress through Early Access development!</p>
+                    
+                    <div style="text-align: center; margin: 40px 0;">
+                        <img src="images/MacIn-VRVertGrid.png" alt="MacIn-VR Logo" style="max-width: 70%; box-shadow: 0 0 30px rgba(255, 120, 199, 0.5);">
+                    </div>
+                </div>
+                
+                <div id="faq" style="padding: 20px;">
+                    <h2>FREQUENTLY ASKED QUESTIONS</h2>
+                    
+                    <div style="border-left: 3px solid var(--secondary-color); padding-left: 15px; margin-bottom: 20px;">
+                        <h3>What VR hardware is supported?</h3>
+                        <p>MacIn-VR is designed to work with Apple Vision Pro as well as standard displays with head tracking via your Mac's camera. Additional VR hardware support will be announced as it becomes available.</p>
+                    </div>
+                    
+                    <div style="border-left: 3px solid var(--primary-color); padding-left: 15px; margin-bottom: 20px;">
+                        <h3>What are the system requirements?</h3>
+                        <p>MacIn-VR is optimized for Apple Silicon Macs (M1 or newer). While it may run on Intel Macs with dedicated graphics cards, the best experience will be on Apple Silicon hardware.</p>
+                    </div>
+                    
+                    <div style="border-left: 3px solid var(--secondary-color); padding-left: 15px; margin-bottom: 20px;">
+                        <h3>Will this ever be available for Windows?</h3>
+                        <p>No. MacIn-VR is designed exclusively for macOS to provide a truly optimized experience for Mac users without the compromises of cross-platform development.</p>
+                    </div>
+                    
+                    <div style="border-left: 3px solid var(--primary-color); padding-left: 15px;">
+                        <h3>When will MacIn-VR leave Early Access?</h3>
+                        <p>We're currently targeting a full release in late 2025, but this timeline may change as development progresses. Join our Discord for the most up-to-date information.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <a href="https://discord.gg/GKacpbpyQb" target="_blank">
+                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord">
+                </a>
+                <a href="https://github.com/nightsightproductions" target="_blank">
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="GitHub">
+                </a>
+                <a href="https://www.youtube.com/@NightSightProductions" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1920px-YouTube_Logo_2017.svg.png" alt="YouTube">
+                </a>
+                <a href="/">
+                    <img src="images/c-logo2.png" alt="NightSight Productions" style="height: 28px; width: auto; margin: 0 10px;">
+                </a>
+                <p class="footer_copy">MacIn-VR is a product of NightSightProductions LLC.<br>&copy; 2025 NightSightProductions LLC. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
