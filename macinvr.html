@@ -193,6 +193,64 @@
             margin: 0 auto;
         }
         
+        /* Mac Window Styling */
+        .mac-window {
+            background-color: var(--card-background);
+            border: 2px solid var(--window-border);
+            border-radius: 8px;
+            margin: 30px auto;
+            overflow: hidden;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 1300px;
+        }
+        
+        .mac-window-header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--window-border);
+        }
+        
+        .mac-window-title {
+            color: white;
+            font-family: 'Chicago', sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .mac-window-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .mac-window-button {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid #000;
+        }
+        
+        .mac-window-close {
+            background-color: #ff5f57;
+        }
+        
+        .mac-window-minimize {
+            background-color: #ffbd2e;
+        }
+        
+        .mac-window-maximize {
+            background-color: #28ca41;
+        }
+        
+        .mac-window-content {
+            padding: 25px;
+        }
+        
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 40px;
@@ -207,7 +265,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            margin: 30px 0;
         }
         
         .feature-card {
@@ -235,7 +293,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            margin: 30px 0;
         }
         
         .gallery-item {
@@ -259,7 +317,7 @@
         /* FAQ section */
         .faq-container {
             max-width: 800px;
-            margin: 50px auto;
+            margin: 30px auto;
         }
         
         .faq-item {
@@ -387,10 +445,6 @@
             background-image: url('https://images.squarespace-cdn.com/content/5f0770791aaf57311515b23d/b71fa08b-4d2c-4775-bd49-62853b7e0636/Website_Homepage_Buttons_400px_SteamVR.png');
         }
         
-        .button-quest {
-            background-image: url('https://images.squarespace-cdn.com/content/5f0770791aaf57311515b23d/5a4862dc-fdf1-4af4-a84d-c9c92c094634/Website_Homepage_Buttons_400px_Quest.png');
-        }
-        
         .button-visionpro {
             background-image: url('https://images.squarespace-cdn.com/content/5f0770791aaf57311515b23d/5a4862dc-fdf1-4af4-a84d-c9c92c094634/Website_Homepage_Buttons_400px_Quest.png');
             /* Replace with actual Vision Pro image when available */
@@ -463,7 +517,7 @@
                     <a href="#faq">FAQ</a>
                     <a href="/">Back to NightSight</a>
                 </nav>
-                <a href="https://discord.gg/GKacpbpyQb" class="btn btn-primary header-cta" target="_blank">Join Discord</a>
+                <a href="https://discord.com/invite/9wZZUF6u5s" class="btn btn-primary header-cta" target="_blank">Join Discord</a>
             </header>
             
             <!-- Full-width hero section with video background -->
@@ -481,113 +535,155 @@
                     
                     <div>
                         <a href="#features" class="btn btn-primary">Explore Features</a>
-                        <a href="https://discord.gg/GKacpbpyQb" target="_blank" class="btn btn-secondary">Join Our Discord</a>
+                        <a href="https://discord.com/invite/9wZZUF6u5s" target="_blank" class="btn btn-secondary">Join Our Discord</a>
                     </div>
                     
                     <div class="platform-buttons-container">
                         <h4 style="margin-bottom: 20px; color: #ccc;">VR not required - Available on:</h4>
                         <div class="platform-buttons-row">
-                            <a href="#" class="button-platform button-steam" target="_blank">macOS</a>
+                            <a href="https://store.steampowered.com/app/3715960/MacInVR/" class="button-platform button-steam" target="_blank">macOS</a>
+                            <a href="https://store.steampowered.com/app/3715960/MacInVR/" class="button-platform button-steamvr" target="_blank">SteamVR</a>
                             <a href="#" class="button-platform button-visionpro" target="_blank">Apple Vision Pro</a>
-                            <a href="#" class="button-platform button-steamvr" target="_blank">SteamVR</a>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <!-- Overview Section -->
+            <!-- Overview Section with Mac window styling -->
             <section id="overview" class="content-section">
-                <h2 class="section-title">PROJECT OVERVIEW</h2>
-                <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto;">
-                    MacIn-VR is the exclusive Social VR experience designed natively for Mac! No more struggling with emulation or compatibility issues - MacIn-VR is built from the ground up to work seamlessly on macOS.
-                </p>
-                
-                <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto;">
-                    Browse the Metaverse, use your VRM avatars, and play with friends in immersive 3D worlds - all running natively on your Mac hardware with optimized performance!
-                </p>
-                
-                <div style="text-align: center; margin: 40px 0;">
-                    <span style="background-color: var(--primary-color); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">Early Access</span>
-                </div>
-                
-                <div style="text-align: center;">
-                    <a href="https://www.youtube.com/@NightSightProductions" target="_blank" class="btn btn-primary">Subscribe for Updates</a>
-                    <a href="https://discord.gg/GKacpbpyQb" target="_blank" class="btn btn-secondary">Join Our Discord</a>
+                <div class="mac-window">
+                    <div class="mac-window-header">
+                        <div class="mac-window-buttons">
+                            <div class="mac-window-button mac-window-close"></div>
+                            <div class="mac-window-button mac-window-minimize"></div>
+                            <div class="mac-window-button mac-window-maximize"></div>
+                        </div>
+                        <h2 class="mac-window-title">PROJECT OVERVIEW</h2>
+                    </div>
+                    <div class="mac-window-content">
+                        <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto;">
+                            MacIn-VR is the exclusive Social VR experience designed natively for Mac! No more struggling with emulation or compatibility issues - MacIn-VR is built from the ground up to work seamlessly on macOS.
+                        </p>
+                        
+                        <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto;">
+                            Browse the Metaverse, use your VRM avatars, and play with friends in immersive 3D worlds - all running natively on your Mac hardware with optimized performance!
+                        </p>
+                        
+                        <div style="text-align: center; margin: 40px 0;">
+                            <span style="background-color: var(--primary-color); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">Early Access</span>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <a href="https://www.youtube.com/@HikikomoriDev" target="_blank" class="btn btn-primary">Subscribe for Updates</a>
+                            <a href="https://discord.com/invite/9wZZUF6u5s" target="_blank" class="btn btn-secondary">Join Our Discord</a>
+                        </div>
+                    </div>
                 </div>
             </section>
             
-            <!-- Features Section -->
+            <!-- Features Section with Mac window styling -->
             <section id="features" class="content-section" style="background-color: rgba(0,0,0,0.3);">
-                <h2 class="section-title">KEY FEATURES</h2>
-                
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3 class="feature-title">Native Mac Performance</h3>
-                        <p>Developed specifically for macOS without using Whisky, CrossOver, or Wine for true native performance.</p>
+                <div class="mac-window">
+                    <div class="mac-window-header">
+                        <div class="mac-window-buttons">
+                            <div class="mac-window-button mac-window-close"></div>
+                            <div class="mac-window-button mac-window-minimize"></div>
+                            <div class="mac-window-button mac-window-maximize"></div>
+                        </div>
+                        <h2 class="mac-window-title">KEY FEATURES</h2>
                     </div>
-                    <div class="feature-card">
-                        <h3 class="feature-title">VRM Avatar Support</h3>
-                        <p>Import and use your custom VRM avatars with full expression and animation support.</p>
+                    <div class="mac-window-content">
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <h3 class="feature-title">Native Mac Performance</h3>
+                                <p>Developed specifically for macOS without using Whisky, CrossOver, or Wine for true native performance.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h3 class="feature-title">VRM Avatar Support</h3>
+                                <p>Import and use your custom VRM avatars with full expression and animation support.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h3 class="feature-title">Apple Silicon Optimized</h3>
+                                <p>Specially optimized for M1, M2, and M3 chips with Metal API for maximum efficiency.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h3 class="feature-title">Immersive 3D Worlds</h3>
+                                <p>Explore beautiful social spaces and custom worlds built for interactive experiences.</p>
+                            </div>
+                        </div>
+                        
+                        <h3 style="text-align: center; font-size: 1.8rem; margin-top: 60px; color: white;">About This Game</h3>
+                        <div style="max-width: 800px; margin: 20px auto; text-align: center;">
+                            <p style="margin-bottom: 20px;">Welcome to MacIn-VR, the exclusive Social VR experience for Mac!</p>
+                            <p style="margin-bottom: 20px;">Browse the Metaverse on your Mac natively! Play in worlds, use your VRM avatars and play with your friends in 3D worlds! No need of Whisky, CrossOver or Wine! MacIn-VR runs solely on the Mac and is meant for the Mac only!</p>
+                            <p style="margin-bottom: 20px;">MacIn-VR brings the social VR experience to Mac users without compromises. We've optimized every aspect of the experience for macOS, ensuring that Mac users can finally enjoy VR social platforms without the performance hits and compatibility issues that come with using emulation layers.</p>
+                            <p>Whether you're meeting friends, attending virtual events, or just exploring creative spaces, MacIn-VR provides a seamless gateway to the metaverse specifically designed for your Mac. Join us on our Early Access journey as we continue to expand and enhance the MacIn-VR experience!</p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <h3 class="feature-title">Apple Silicon Optimized</h3>
-                        <p>Specially optimized for M1, M2, and M3 chips with Metal API for maximum efficiency.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 class="feature-title">Immersive 3D Worlds</h3>
-                        <p>Explore beautiful social spaces and custom worlds built for interactive experiences.</p>
-                    </div>
-                </div>
-                
-                <h3 style="text-align: center; font-size: 1.8rem; margin-top: 60px; color: white;">About This Game</h3>
-                <div style="max-width: 800px; margin: 20px auto; text-align: center;">
-                    <p style="margin-bottom: 20px;">Welcome to MacIn-VR, the exclusive Social VR experience for Mac!</p>
-                    <p style="margin-bottom: 20px;">Browse the Metaverse on your Mac natively! Play in worlds, use your VRM avatars and play with your friends in 3D worlds! No need of Whisky, CrossOver or Wine! MacIn-VR runs solely on the Mac and is meant for the Mac only!</p>
-                    <p style="margin-bottom: 20px;">MacIn-VR brings the social VR experience to Mac users without compromises. We've optimized every aspect of the experience for macOS, ensuring that Mac users can finally enjoy VR social platforms without the performance hits and compatibility issues that come with using emulation layers.</p>
-                    <p>Whether you're meeting friends, attending virtual events, or just exploring creative spaces, MacIn-VR provides a seamless gateway to the metaverse specifically designed for your Mac. Join us on our Early Access journey as we continue to expand and enhance the MacIn-VR experience!</p>
                 </div>
             </section>
             
-            <!-- Gallery Section -->
+            <!-- Gallery Section with Mac window styling -->
             <section id="gallery" class="content-section">
-                <h2 class="section-title">MEDIA GALLERY</h2>
-                <p style="text-align: center; margin-bottom: 40px;">Experience the fusion of classic Mac aesthetics and modern VR social spaces:</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="images/MacIn-VR Cafe.png" alt="MacIn-VR Cafe">
+                <div class="mac-window">
+                    <div class="mac-window-header">
+                        <div class="mac-window-buttons">
+                            <div class="mac-window-button mac-window-close"></div>
+                            <div class="mac-window-button mac-window-minimize"></div>
+                            <div class="mac-window-button mac-window-maximize"></div>
+                        </div>
+                        <h2 class="mac-window-title">MEDIA GALLERY</h2>
                     </div>
-                    <div class="gallery-item">
-                        <img src="images/MacIn-VRVertGrid.png" alt="MacIn-VR Grid">
+                    <div class="mac-window-content">
+                        <p style="text-align: center; margin-bottom: 40px;">Experience the fusion of classic Mac aesthetics and modern VR social spaces:</p>
+                        
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/MacIn-VR Cafe.png" alt="MacIn-VR Cafe">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/MacIn-VRVertGrid.png" alt="MacIn-VR Grid">
+                            </div>
+                        </div>
+                        
+                        <p style="text-align: center; font-style: italic; margin-top: 30px;">More screenshots coming soon as we progress through Early Access development!</p>
                     </div>
                 </div>
-                
-                <p style="text-align: center; font-style: italic; margin-top: 30px;">More screenshots coming soon as we progress through Early Access development!</p>
             </section>
             
-            <!-- FAQ Section -->
+            <!-- FAQ Section with Mac window styling -->
             <section id="faq" class="content-section" style="background-color: rgba(0,0,0,0.3);">
-                <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
-                
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <h3 class="faq-question">What VR hardware is supported?</h3>
-                        <p>MacIn-VR is designed to work with Apple Vision Pro as well as standard displays with head tracking via your Mac's camera. Additional VR hardware support will be announced as it becomes available.</p>
+                <div class="mac-window">
+                    <div class="mac-window-header">
+                        <div class="mac-window-buttons">
+                            <div class="mac-window-button mac-window-close"></div>
+                            <div class="mac-window-button mac-window-minimize"></div>
+                            <div class="mac-window-button mac-window-maximize"></div>
+                        </div>
+                        <h2 class="mac-window-title">FREQUENTLY ASKED QUESTIONS</h2>
                     </div>
-                    
-                    <div class="faq-item">
-                        <h3 class="faq-question">What are the system requirements?</h3>
-                        <p>MacIn-VR is optimized for Apple Silicon Macs (M1 or newer). While it may run on Intel Macs with dedicated graphics cards, the best experience will be on Apple Silicon hardware.</p>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h3 class="faq-question">Will this ever be available for Windows?</h3>
-                        <p>No. MacIn-VR is designed exclusively for macOS to provide a truly optimized experience for Mac users without the compromises of cross-platform development.</p>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h3 class="faq-question">When will MacIn-VR leave Early Access?</h3>
-                        <p>We're currently targeting a full release in late 2025, but this timeline may change as development progresses. Join our Discord for the most up-to-date information.</p>
+                    <div class="mac-window-content">
+                        <div class="faq-container">
+                            <div class="faq-item">
+                                <h3 class="faq-question">What VR hardware is supported?</h3>
+                                <p>MacIn-VR is designed to work with Apple Vision Pro as well as standard displays with head tracking via your Mac's camera. Additional VR hardware support will be announced as it becomes available.</p>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <h3 class="faq-question">What are the system requirements?</h3>
+                                <p>MacIn-VR is optimized for Apple Silicon Macs (M1 or newer). While it may run on Intel Macs with dedicated graphics cards, the best experience will be on Apple Silicon hardware.</p>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <h3 class="faq-question">Will this ever be available for Windows?</h3>
+                                <p>No. MacIn-VR is designed exclusively for macOS to provide a truly optimized experience for Mac users without the compromises of cross-platform development.</p>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <h3 class="faq-question">When will MacIn-VR leave Early Access?</h3>
+                                <p>We're currently targeting a full release in late 2025, but this timeline may change as development progresses. Join our Discord for the most up-to-date information.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -595,13 +691,13 @@
             <!-- Footer -->
             <footer class="footer">
                 <div class="social-icons">
-                    <a href="https://discord.gg/GKacpbpyQb" target="_blank" class="social-icon">
+                    <a href="https://discord.com/invite/9wZZUF6u5s" target="_blank" class="social-icon">
                         <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord">
                     </a>
                     <a href="https://github.com/nightsightproductions" target="_blank" class="social-icon">
                         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
                     </a>
-                    <a href="https://www.youtube.com/@NightSightProductions" target="_blank" class="social-icon">
+                    <a href="https://www.youtube.com/@HikikomoriDev" target="_blank" class="social-icon">
                         <img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" alt="YouTube">
                     </a>
                 </div>
